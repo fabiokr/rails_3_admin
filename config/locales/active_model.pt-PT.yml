@@ -1,0 +1,25 @@
+"pt-PT":
+  activerecord:
+    models:
+      page: Página
+    attributes:
+      page:
+        title: Título
+        description: Descrição
+        tags: Tags
+        created_at: Criada em
+        updated_at: Atualizada em
+    formtastic:
+      titles:
+        post_details: "Post details"
+      labels:
+        pages:
+          title: "Your Title"
+          description: "Write something..."
+          edit:
+            title: "Edit title"
+      hints:
+        pages:
+          title: "Choose a good title for you post."
+          description: "Write something inspiring here."
+
