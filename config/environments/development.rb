@@ -1,4 +1,4 @@
-Mdmanagement::Application.configure do
+ActiveAdminBase::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -23,4 +23,3 @@ Mdmanagement::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 end
-

@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Mdmanagement::Application.load_tasks
+ActiveAdminBase::Application.load_tasks
