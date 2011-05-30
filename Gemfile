@@ -4,7 +4,9 @@ gem 'rake', '~> 0.8.7' #Provisory until new Rails version fixes rake 0.9.0 integ
 gem 'rails', '3.0.7'
 
 #libraries
-gem 'activeadmin'
+gem 'activeadmin', :git => 'git@github.com:fabiokr/active_admin.git'
+gem 'ckeditor'
+gem 'paperclip'
 
 #views
 gem 'jquery-rails'

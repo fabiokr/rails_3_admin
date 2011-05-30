@@ -256,34 +256,33 @@ th, td, caption {
     padding: 0;
     display: inline;
     height: 100%; }
-    #header ul#tabs li {
-      display: inline;
+    #header ul#tabs > li {
+      display: inline-block;
       margin-right: 4px;
-      padding: 9px 0;
       font-size: 1.0em;
       position: relative;
       /* Hover on li, display the ul */
       /* Drop down menus */ }
-      #header ul#tabs li a {
+      #header ul#tabs > li a {
         text-decoration: none;
         padding: 6px 10px 4px 10px;
         position: relative;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px; }
-      #header ul#tabs li.current > a {
+      #header ul#tabs > li.current > a {
         background: #7b8389;
         color: #fff; }
-      #header ul#tabs li.has_nested > a {
+      #header ul#tabs > li.has_nested > a {
         background: url("/images/active_admin/nested_menu_arrow.gif") no-repeat 89% 50%;
         padding-right: 20px; }
-      #header ul#tabs li.has_nested.current > a {
+      #header ul#tabs > li.has_nested.current > a {
         background: #7b8389 url("/images/active_admin/nested_menu_arrow_dark.gif") no-repeat 89% 50%;
         padding-right: 20px; }
-      #header ul#tabs li:hover > a {
+      #header ul#tabs > li:hover > a {
         background: #7b8389;
         color: #fff; }
-      #header ul#tabs li.has_nested:hover > a {
+      #header ul#tabs > li.has_nested:hover > a {
         -webkit-border-radius: 0;
         -moz-border-radius: 0;
         border-radius: 0;
@@ -296,9 +295,9 @@ th, td, caption {
         z-index: 800;
         border-bottom: 5px solid #7b8389;
         background: #7b8389 url("/images/active_admin/nested_menu_arrow_dark.gif") no-repeat 89% 50%; }
-      #header ul#tabs li:hover ul {
+      #header ul#tabs > li:hover ul {
         display: block; }
-      #header ul#tabs li ul {
+      #header ul#tabs > li ul {
         background: #7b8389;
         border-top-right-radius: 10px;
         -moz-border-radius-topright: 10px;
@@ -320,16 +319,17 @@ th, td, caption {
         margin-top: 4px;
         float: left;
         display: none;
-        padding: 3px 0px 5px 0; }
-        #header ul#tabs li ul li {
+        padding: 3px 0px 5px 0;
+        list-style: none; }
+        #header ul#tabs > li ul li {
           margin: 0px; }
-          #header ul#tabs li ul li a {
+          #header ul#tabs > li ul li a {
             background: none;
             display: block; }
-            #header ul#tabs li ul li a:hover {
+            #header ul#tabs > li ul li a:hover {
               color: #fff;
               background: none; }
-          #header ul#tabs li ul li.current a {
+          #header ul#tabs > li ul li.current a {
             -webkit-border-radius: 0;
             -moz-border-radius: 0;
             border-radius: 0; }
