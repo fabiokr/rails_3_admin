@@ -1,5 +1,9 @@
 require 'test_helper'
 
+class ApplicationController
+  managable_content_ignore_namespace 'admin'
+end
+
 class HomeMocksController < ApplicationController
   managable_content_for :body, :side
 end
@@ -9,6 +13,9 @@ class OtherMocksController < ApplicationController
 end
 
 class HomeNoContentMocksController < ApplicationController
+end
+
+class Admin::IgnoredContentMocksController < ApplicationController
 end
 
 class PageTest < ActiveSupport::TestCase
@@ -47,6 +54,10 @@ class PageTest < ActiveSupport::TestCase
       resources :home_mocks
       resources :other_mocks
       resources :home_no_content_mocks
+
+      namespace :admin do
+        resources :ignored_content_mocks
+      end
     end
 
     Page.generate!
@@ -63,7 +74,7 @@ class PageTest < ActiveSupport::TestCase
 
   def check_generated_pages
     @pages = Page.all
-    assert_equal 2, @pages.size
+    assert_equal 3, @pages.size
 
     @page = @pages[0]
     assert_equal HomeMocksController.controller_path, @page.controller_path
@@ -78,6 +89,11 @@ class PageTest < ActiveSupport::TestCase
     assert_equal 2, @page.page_contents.size
     assert_equal 'body', @page.page_contents[0].key
     assert_equal 'footer', @page.page_contents[1].key
+
+    @page = @pages[2]
+    assert_equal HomeNoContentMocksController.controller_path, @page.controller_path
+
+    assert @page.page_contents.empty?
   end
 
 end

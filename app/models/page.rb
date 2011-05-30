@@ -22,7 +22,7 @@ class Page < ActiveRecord::Base
 
     controllers.uniq.each do |controller|
       controller_path = controller.controller_path
-      if controller.respond_to?(:managable_content_for) && !controller.managable_content_for.empty?
+      if controller.respond_to?(:managable_content_for) && valid_controllers.include?(controller_path)
         Page.transaction do
           # Create Page if it does not exist yet
           page = Page.where(:controller_path => controller_path).first || Page.new()
@@ -42,5 +42,21 @@ class Page < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def self.valid_controllers
+    @@valid_controllers ||= []
+    if @@valid_controllers.empty?
+      controller_paths = Rails.application.routes.routes.map do |route|
+        controller_path = route.requirements[:controller]
+      end
+      @@valid_controllers = controller_paths.select do |controller_path|
+        !ApplicationController.managable_content_ignore_namespace.detect do |ignored|
+          controller_path.start_with?(ignored)
+        end
+      end
+      @@valid_controllers.uniq!
+    end
+    @@valid_controllers
   end
 end

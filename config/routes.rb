@@ -3,6 +3,6 @@ Mdmanagement::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resource :home
+  resources :homes, :only => [:index]
   root :to => "homes#index"
 end

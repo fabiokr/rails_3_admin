@@ -3,6 +3,7 @@ require 'test_helper'
 class ActiveAdminCms::HasContentMock < ApplicationController
   include ActiveAdminCms::Controllers::HasContent
 
+  managable_content_ignore_namespace 'admin', 'another'
   managable_content_for :body, :side
 end
 
@@ -18,6 +19,10 @@ class ActiveAdminCms::HasContentTest < ActiveSupport::TestCase
 
   test 'should configure content types' do
     assert_equal [:body, :side], ActiveAdminCms::HasContentMock.managable_content_for
+  end
+
+  test 'should configure ignored namespace' do
+    assert_equal ['admin', 'another'], ActiveAdminCms::HasContentMock.managable_content_ignore_namespace
   end
 
   test 'should retrieve correct content with helper' do

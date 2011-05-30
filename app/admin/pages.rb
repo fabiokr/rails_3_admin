@@ -10,9 +10,27 @@ ActiveAdmin.register Page do
     Page.generate!
   end
 
+  scope :available, :default => true do |pages|
+    pages.where(:controller_path => Page.valid_controllers)
+  end
+
   index do
     column :url do |page|
-      link_to page.controller_path, admin_page_path(page)
+      route = Rails.application.routes.routes.find { |route| route.requirements[:controller] == page.controller_path}
+
+      #first try with index
+      begin
+        url = Rails.application.routes.generate(:controller => route.requirements[:controller], :action => :index)
+      rescue ActionController::RoutingError
+      end
+
+      #if didn't exist, try with show
+      begin
+        url = Rails.application.routes.generate(:controller => route.requirements[:controller], :action => :show) if url.nil?
+      rescue ActionController::RoutingError
+      end
+
+      link_to_if !url.nil?, url, url
     end
     column :title
     column :description
