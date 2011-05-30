@@ -38,15 +38,10 @@ ActiveAdmin.register Page do
         if controller.managable_content_for.include? content.object.key.to_sym
           content.inputs do
             content.input :id, :as => :hidden
-            content.input :content, :label => I18n.t("pages.#{content.object.key}")
+            content.input :content, :label => I18n.t("pages.#{content.object.key}"), :input_html => {:class => 'wysiwyg'}
           end
         end
       end
-
-
-      #f.object.page_contents.each do |content|
-      #  f.input "content_#{content.key}"
-      #end
     end
     f.buttons
   end
