@@ -28,7 +28,7 @@ module ActiveAdminCms
       module InstanceMethods
         def managable_content_for(key)
           page_content = Page.content(controller_path, key)
-          page_content.nil? ? nil : page_content.content
+          page_content.nil? ? nil : page_content.content.html_safe
         end
       end
     end
