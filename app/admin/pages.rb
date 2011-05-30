@@ -6,7 +6,7 @@ ActiveAdmin.register Page do
   filter :description
   filter :tags
 
-  before_filter :only => :index do
+  before_filter do
     Page.generate!
   end
 
@@ -25,15 +25,22 @@ ActiveAdmin.register Page do
   end
 
   form do |f|
+    controller_name = "#{f.object.controller_path.camelize}Controller"
+    controller = ActiveSupport::Dependencies.ref(controller_name).get
+
     f.inputs "Details" do
       f.input :title
       f.input :description
       f.input :tags
     end
     f.inputs "Content" do
-      f.inputs :for => :page_contents do |content|
-        content.input :id, :as => :hidden
-        content.input :content, :label => I18n.t("pages.#{content.object.key}")
+      f.fields_for :page_contents do |content|
+        if controller.managable_content_for.include? content.object.key.to_sym
+          content.inputs do
+            content.input :id, :as => :hidden
+            content.input :content, :label => I18n.t("pages.#{content.object.key}")
+          end
+        end
       end
 
 
