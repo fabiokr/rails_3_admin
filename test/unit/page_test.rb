@@ -20,6 +20,15 @@ class PageTest < ActiveSupport::TestCase
 
   should have_db_index(:controller_path).unique(true)
 
+  should_not allow_mass_assignment_of(:controller_path)
+  should_not allow_mass_assignment_of(:updated_at)
+  should_not allow_mass_assignment_of(:created_at)
+
+  should allow_mass_assignment_of(:title)
+  should allow_mass_assignment_of(:description)
+  should allow_mass_assignment_of(:tags)
+  should allow_mass_assignment_of(:page_contents_attributes)
+
   should validate_presence_of(:controller_path)
 
   should have_many(:page_contents).dependent(:destroy)
