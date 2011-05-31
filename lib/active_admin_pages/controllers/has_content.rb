@@ -31,7 +31,7 @@ module ActiveAdminPages
 
           if page && Page.accessible_attributes.deny?(key) && key != :updated_at
             content = page.page_contents.for_key(key).first
-            content = content.content.html_safe unless content.nil?
+            content = (content.nil? || content.content.nil?) ? nil : content.content.html_safe
           elsif page
             content = page.send(key)
           end
