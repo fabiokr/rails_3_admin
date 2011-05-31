@@ -16,6 +16,7 @@ group :development, :test do
   gem 'rails3-generators'
 
   gem 'minitest'
+  gem "simplecov", '>= 0.4.0', :require => false
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl'

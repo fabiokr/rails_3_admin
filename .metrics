@@ -1,0 +1,7 @@
+# Metrical configuration - https://github.com/iain/metrical
+MetricFu::Configuration.run do |config|
+  #config.metrics  = [:churn, :flog, :flay, :reek, :roodi, :rails_best_practices]
+  config.metrics  = [:churn, :flay, :reek, :roodi, :rails_best_practices]
+  config.graphs   = [:churn, :flay, :reek, :roodi, :rails_best_practices]
+end
+
