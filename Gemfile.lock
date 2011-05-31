@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:fabiokr/active_admin.git
-  revision: 6ace5a74c61bcb2919e6115738dd893a0feff66a
+  revision: 1822110484660358e3a50630cd22da14341b1d60
   specs:
     activeadmin (0.2.2)
       devise (>= 1.1.2)

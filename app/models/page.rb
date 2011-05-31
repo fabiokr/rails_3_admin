@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  extend ActiveSupport::Memoizable
+
   has_many :page_contents, :dependent => :destroy
 
   attr_accessible :title, :description, :tags, :page_contents_attributes
@@ -78,4 +80,26 @@ class Page < ActiveRecord::Base
       valid_controllers
     end
   end
+
+  def url
+    route = Rails.application.routes.routes.find { |route| route.requirements[:controller] == controller_path}
+    generate_route = lambda { |action| Rails.application.routes.generate(:controller => route.requirements[:controller], :action => action) }
+    url = nil
+
+    #first try with index
+    begin
+      url = generate_route.call(:index)
+    rescue ActionController::RoutingError
+    end
+
+    #if didn't exist, try with show
+    begin
+      url = generate_route.call(:show) if url.nil?
+    rescue ActionController::RoutingError
+    end
+
+    url
+  end
+  memoize :url
+
 end

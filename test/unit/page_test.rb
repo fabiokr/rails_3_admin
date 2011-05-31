@@ -79,6 +79,13 @@ class PageTest < ActiveSupport::TestCase
     check_generated_pages
   end
 
+  test 'should be able to get the page url' do
+    Page.generate!
+
+    @page = Page.for_controller(HomeMocksController.controller_path)
+    assert_equal '/home_mocks', @page.url
+  end
+
   private
 
   def check_generated_pages

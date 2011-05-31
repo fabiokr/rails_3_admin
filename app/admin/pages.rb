@@ -16,21 +16,7 @@ ActiveAdmin.register Page do
 
   index do
     column :url do |page|
-      route = Rails.application.routes.routes.find { |route| route.requirements[:controller] == page.controller_path}
-
-      #first try with index
-      begin
-        url = Rails.application.routes.generate(:controller => route.requirements[:controller], :action => :index)
-      rescue ActionController::RoutingError
-      end
-
-      #if didn't exist, try with show
-      begin
-        url = Rails.application.routes.generate(:controller => route.requirements[:controller], :action => :show) if url.nil?
-      rescue ActionController::RoutingError
-      end
-
-      link_to_if !url.nil?, url, url
+      link_to_if (url = page.url), url, url
     end
     column :title
     column :description
@@ -40,6 +26,11 @@ ActiveAdmin.register Page do
       links = link_to I18n.t('active_admin.view'), resource_path(page), :class => "view_link"
       links += link_to I18n.t('active_admin.edit'), edit_resource_path(page), :class => "edit_link"
     end
+  end
+
+  show do |page|
+    attributes = page.class.columns.collect{|column| column.name.to_sym } - [:controller_path] + [:url]
+    attributes_table *attributes
   end
 
   form do |f|
