@@ -6,11 +6,8 @@ class Page < ActiveRecord::Base
 
   validates :controller_path, :presence => true
 
-  # Looks for a PageContent by the controller path and the content key
-  def self.content(controller_path, key)
-    PageContent.joins(:page)
-               .where(:key => key, :pages => {:controller_path => controller_path})
-               .first
+  def self.for_controller(controller_path)
+    where(:controller_path => controller_path).first
   end
 
   # Generates Pages for each Controller that has managable_content_for set
@@ -33,7 +30,7 @@ class Page < ActiveRecord::Base
 
           # Create PageContent if it does not exist yet
           controller.managable_content_for.each do |key|
-            if content(controller_path, key).nil?
+            if page.page_contents.where(:key => key).first.nil?
               page_content = page.page_contents.build
               page_content.key = key
               page_content.save!

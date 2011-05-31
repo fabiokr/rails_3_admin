@@ -21,4 +21,10 @@ class PageContentTest < ActiveSupport::TestCase
 
   should belong_to :page
 
+  test 'should be able to find by key' do
+    @page_content = Factory(:page_content)
+
+    assert_equal @page_content, PageContent.for_key(@page_content.key).first
+  end
+
 end

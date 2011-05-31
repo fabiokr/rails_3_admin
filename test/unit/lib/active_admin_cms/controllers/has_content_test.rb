@@ -30,6 +30,12 @@ class ActiveAdminCms::HasContentTest < ActiveSupport::TestCase
     assert_equal @content_side.content, @controller.managable_content_for(:side)
   end
 
+  test 'should retrieve correct page content with helper' do
+    assert_equal @page.title, @controller.managable_content_for(:title)
+    assert_equal @page.description, @controller.managable_content_for(:description)
+    assert_equal @page.tags, @controller.managable_content_for(:tags)
+  end
+
   test 'should retrieve nil for invalid content' do
     assert_nil @controller.managable_content_for(:invalid)
   end

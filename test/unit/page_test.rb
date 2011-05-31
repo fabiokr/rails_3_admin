@@ -40,13 +40,10 @@ class PageTest < ActiveSupport::TestCase
 
   should have_many(:page_contents).dependent(:destroy)
 
-  test 'should be able to find page content' do
-    @page = Factory(:page, :controller_path => 'controller_path')
-    @content_body = Factory(:page_content, :page => @page, :key => 'body')
-    @content_side = Factory(:page_content, :page => @page, :key => 'side')
+  test 'should be able to find page' do
+    @page = Factory(:page)
 
-    assert_equal @content_body, Page.content(@page.controller_path, @content_body.key)
-    assert_equal @content_side, Page.content(@page.controller_path, @content_side.key)
+    assert_equal @page.id, Page.for_controller(@page.controller_path).id
   end
 
   test 'should be able to generate pages for existing controllers' do
