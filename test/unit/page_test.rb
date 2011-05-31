@@ -43,13 +43,7 @@ class PageTest < ActiveSupport::TestCase
 
   should have_many(:page_contents).dependent(:destroy)
 
-  test 'should be able to find page' do
-    @page = Factory(:page)
-
-    assert_equal @page.id, Page.for_controller(@page.controller_path).id
-  end
-
-  test 'should be able to generate pages for existing controllers' do
+  def setup
     Rails.application.routes.draw do
       resources :home_mocks
       resources :other_mocks
@@ -60,15 +54,29 @@ class PageTest < ActiveSupport::TestCase
         resources :mocks
       end
     end
+  end
 
+  def teardown
+    Rails.application.reload_routes!
+  end
+
+  test 'should be able to find page' do
+    @page = Factory(:page)
+
+    assert_equal @page.id, Page.for_controller(@page.controller_path).id
+  end
+
+  test 'should be able to find a page that was not yet created' do
+    assert_equal 'home_mocks', Page.for_controller('home_mocks').controller_path
+  end
+
+  test 'should be able to generate pages for existing controllers' do
     Page.generate!
     check_generated_pages
 
     # Should NOT regenarete already existing pages and contents
     Page.generate!
     check_generated_pages
-
-    Rails.application.reload_routes!
   end
 
   private

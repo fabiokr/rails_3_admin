@@ -27,14 +27,16 @@ module ActiveAdminPages
 
       module InstanceMethods
         def managable_content_for(key)
-          page = Page.for_controller(controller_path)
+          content, page = nil, Page.for_controller(controller_path)
 
-          if key != :updated_at && Page.accessible_attributes.deny?(key)
-            page_content = page.page_contents.for_key(key).first
-            page_content.nil? ? nil : page_content.content.html_safe
-          else
-            page.send(key)
+          if page && Page.accessible_attributes.deny?(key) && key != :updated_at
+            content = page.page_contents.for_key(key).first
+            content = content.content.html_safe unless content.nil?
+          elsif page
+            content = page.send(key)
           end
+
+          content
         end
       end
     end

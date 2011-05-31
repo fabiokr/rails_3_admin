@@ -8,8 +8,16 @@ class Page < ActiveRecord::Base
 
   class << self
 
+    # Looks for the page related to a controller.
     def for_controller(controller_path)
-      where(:controller_path => controller_path).first
+      finder = lambda { where(:controller_path => controller_path).first }
+
+      unless page = finder.call
+        generate!
+        page = finder.call
+      end
+
+      page
     end
 
     # Retrieves a list of controller which will have managable content.
