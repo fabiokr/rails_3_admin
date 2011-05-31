@@ -15,6 +15,7 @@ class ActiveAdminPages::HasContentTest < ActiveSupport::TestCase
     @page = Factory(:page, :controller_path => @controller.controller_path)
     @content_body = Factory(:page_content, :page => @page, :key => 'body')
     @content_side = Factory(:page_content, :page => @page, :key => 'side')
+    @page.reload
   end
 
   test 'should configure content types' do
@@ -34,6 +35,7 @@ class ActiveAdminPages::HasContentTest < ActiveSupport::TestCase
     assert_equal @page.title, @controller.managable_content_for(:title)
     assert_equal @page.description, @controller.managable_content_for(:description)
     assert_equal @page.tags, @controller.managable_content_for(:tags)
+    assert_equal @page.updated_at, @controller.managable_content_for(:updated_at)
   end
 
   test 'should retrieve nil for invalid content' do
