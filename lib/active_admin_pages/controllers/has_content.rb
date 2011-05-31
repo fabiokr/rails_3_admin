@@ -20,7 +20,7 @@ module ActiveAdminPages
 
         def managable_content_ignore_namespace(*args)
           @@contents_ignore_namespace ||= []
-          @@contents_ignore_namespace = args unless args.empty?
+          @@contents_ignore_namespace += args unless args.empty?
           @@contents_ignore_namespace
         end
       end

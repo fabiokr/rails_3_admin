@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ApplicationController
-  managable_content_ignore_namespace 'admin'
+  managable_content_ignore_namespace 'ignored'
 end
 
 class HomeMocksController < ApplicationController
@@ -15,7 +15,10 @@ end
 class HomeNoContentMocksController < ApplicationController
 end
 
-class Admin::IgnoredContentMocksController < ApplicationController
+class Admin::MocksController < ApplicationController
+end
+
+class IgnoredMocksController < ApplicationController
 end
 
 class PageTest < ActiveSupport::TestCase
@@ -51,9 +54,10 @@ class PageTest < ActiveSupport::TestCase
       resources :home_mocks
       resources :other_mocks
       resources :home_no_content_mocks
+      resources :ignored_mocks
 
       namespace :admin do
-        resources :ignored_content_mocks
+        resources :mocks
       end
     end
 
