@@ -48,8 +48,6 @@ class Page < ActiveRecord::Base
       end
     end
 
-    private
-
     def valid_controllers
       valid_controllers = []
       if valid_controllers.empty?
