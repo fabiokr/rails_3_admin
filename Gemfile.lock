@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:fabiokr/active_admin.git
+  remote: git://github.com/fabiokr/active_admin.git
   revision: b53c7c35a26063ce61e943b26f07f67e2bfc5cec
   specs:
     activeadmin (0.2.2)
