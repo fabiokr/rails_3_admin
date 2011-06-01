@@ -19,9 +19,9 @@ ActiveAdmin.register Page do
       link_to_if (url = page.url), url, url
     end
     column :title
-    column :description
-    column :tags
-    column :updated_at
+    column :updated_at do |page|
+      l page.updated_at, :format => :short
+    end
     column '' do |page|
       links = link_to I18n.t('active_admin.view'), resource_path(page), :class => "view_link"
       links += link_to I18n.t('active_admin.edit'), edit_resource_path(page), :class => "edit_link"
