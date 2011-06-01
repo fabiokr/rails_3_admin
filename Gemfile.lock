@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:fabiokr/active_admin.git
-  revision: 1822110484660358e3a50630cd22da14341b1d60
+  revision: b53c7c35a26063ce61e943b26f07f67e2bfc5cec
   specs:
     activeadmin (0.2.2)
       devise (>= 1.1.2)
@@ -74,7 +74,7 @@ GEM
     faker (0.9.5)
       i18n (~> 0.4)
     ffi (1.0.9)
-    formtastic (1.2.3)
+    formtastic (1.2.4)
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
@@ -137,7 +137,7 @@ GEM
     rake (0.8.7)
     responders (0.6.4)
     rubyzip (0.9.4)
-    sass (3.1.1)
+    sass (3.1.2)
     selenium-webdriver (0.2.0)
       childprocess (>= 0.1.7)
       ffi (>= 1.0.7)
