@@ -19,7 +19,7 @@ ActiveAdmin.register Page do
       link_to_if (url = page.url), url, url
     end
     column :title
-    column :updated_at do |page|
+    column :updated_at, :sortable => :updated_at do |page|
       l page.updated_at, :format => :short
     end
     column '' do |page|
