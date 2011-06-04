@@ -42,16 +42,21 @@ ActiveAdmin.register Page do
       f.input :description
       f.input :tags
     end
-    f.inputs "Content" do
-      f.fields_for :page_contents do |content|
-        if controller.managable_content_for.include? content.object.key.to_sym
-          content.inputs do
-            content.input :id, :as => :hidden
-            content.input :content, :label => I18n.t("pages.#{content.object.key}"), :input_html => {:class => 'wysiwyg'}
+
+    #only shows page_contents if the page has managable contents
+    if !f.object.page_contents.empty? && f.object.page_contents.detect{|content| controller.managable_content_for.include? content.key.to_sym}
+      f.inputs "Content" do
+        f.fields_for :page_contents do |content|
+          if controller.managable_content_for.include? content.object.key.to_sym
+            content.inputs do
+              content.input :id, :as => :hidden
+              content.input :content, :label => I18n.t("pages.#{content.object.key}"), :input_html => {:class => 'wysiwyg'}
+            end
           end
         end
       end
     end
+
     f.buttons
   end
 end
