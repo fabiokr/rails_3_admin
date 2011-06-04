@@ -50,7 +50,7 @@ ActiveAdmin.register Page do
           if controller.managable_content_for.include? content.object.key.to_sym
             content.inputs do
               content.input :id, :as => :hidden
-              content.input :content, :label => I18n.t("pages.#{content.object.key}"), :input_html => {:class => 'wysiwyg'}
+              content.input :content, :label => I18n.t("active_admin_pages.#{content.object.key}"), :input_html => {:class => 'wysiwyg'}
             end
           end
         end
@@ -58,5 +58,13 @@ ActiveAdmin.register Page do
     end
 
     f.buttons
+  end
+
+  sidebar :help, :only => [:new, :create, :edit, :update]  do
+    ul do
+      li I18n.t('active_admin_pages.help_title')
+      li I18n.t('active_admin_pages.help_description')
+      li I18n.t('active_admin_pages.help_tags')
+    end
   end
 end
