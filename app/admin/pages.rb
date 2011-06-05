@@ -10,9 +10,7 @@ ActiveAdmin.register Page do
     Page.generate!
   end
 
-  scope :available, :default => true do |pages|
-    pages.where(:controller_path => Page.valid_controllers)
-  end
+  scope :available, :default => true
 
   index do
     column :url do |page|

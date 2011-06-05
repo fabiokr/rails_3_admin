@@ -8,6 +8,9 @@ class Page < ActiveRecord::Base
 
   validates :controller_path, :presence => true
 
+  scope :sorted, order('title ASC')
+  scope :available, lambda { where(:controller_path => valid_controllers) }
+
   class << self
 
     # Looks for the page related to a controller.

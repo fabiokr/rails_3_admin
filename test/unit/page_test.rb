@@ -86,6 +86,14 @@ class PageTest < ActiveSupport::TestCase
     assert_equal '/home_mocks', @page.url
   end
 
+  test 'should have available scope' do
+    assert_equal Page.where(:controller_path => Page.valid_controllers), Page.available
+  end
+
+  test 'should have sorted scope' do
+    assert_equal Page.order('title ASC').all, Page.sorted.all
+  end
+
   private
 
   def check_generated_pages
