@@ -46,4 +46,10 @@ ActiveAdminBase::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.before_configuration do
+    I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+    I18n.locale = 'pt-PT'
+    I18n.reload!
+  end
 end
