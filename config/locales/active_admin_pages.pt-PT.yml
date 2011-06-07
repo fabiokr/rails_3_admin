@@ -1,7 +1,0 @@
-"pt-PT":
-  active_admin_pages:
-    body: Conteúdo Principal
-    help_title: O atributo título será utilizado como título da página
-    help_description: O atributo descrição será utilizado como tag meta-description
-    help_tags: O atributo tags será utilizado como tag meta-tags
-

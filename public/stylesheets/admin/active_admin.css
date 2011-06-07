@@ -822,7 +822,7 @@ td span.icon svg, p span.icon svg {
 td span.icon, p span.icon {
   margin: 0 3px; }
 
-a.view_link, a.edit_link, a.delete_link {
+a.member_link {
   margin-right: 7px;
   white-space: nowrap; }
 
@@ -1035,11 +1035,6 @@ table {
   .pagination_information b {
     color: #5c6469; }
 
-#index_footer {
-  padding-top: 5px;
-  text-align: right;
-  font-size: 0.85em; }
-
 .pagination {
   display: inline;
   font-size: 0.9;
@@ -1091,7 +1086,7 @@ table {
       box-shadow: inset 0 1px 2px #aaaaaa;
       -moz-box-shadow: inset 0 1px 2px #aaaaaa;
       -webkit-box-shadow: inset 0 1px 2px #aaaaaa; }
-  .pagination em {
+  .pagination span.page.current {
     box-shadow: 0 1px 2px #aaaaaa;
     -moz-box-shadow: 0 1px 2px #aaaaaa;
     -webkit-box-shadow: 0 1px 2px #aaaaaa;
@@ -1112,25 +1107,30 @@ table {
     padding: .6em 1.4em .5em 1.3em;
     border: none;
     color: #efefef; }
-    .pagination em:hover {
+    .pagination span.page.current:hover {
       color: #fff;
       box-shadow: 0 1px 3px #888888;
       -moz-box-shadow: 0 1px 3px #888888;
       -webkit-box-shadow: 0 1px 3px #888888; }
-      .pagination em:hover span.icon svg path, .pagination em:hover span.icon svg polygon, .pagination em:hover span.icon svg rect, .pagination em:hover span.icon svg circle {
+      .pagination span.page.current:hover span.icon svg path, .pagination span.page.current:hover span.icon svg polygon, .pagination span.page.current:hover span.icon svg rect, .pagination span.page.current:hover span.icon svg circle {
         fill: white !important; }
-    .pagination em:active {
+    .pagination span.page.current:active {
       box-shadow: inset 0 1px 2px black;
       -moz-box-shadow: inset 0 1px 2px black;
       -webkit-box-shadow: inset 0 1px 2px black; }
-  .pagination a, .pagination em {
+  .pagination a, .pagination span.page.current {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
     margin-right: 4px;
     padding: 2px 5px; }
-  .pagination .previous_page, .pagination .next_page {
-    display: none; }
+  .pagination span.page.current {
+    padding-left: 7px; }
+
+#index_footer {
+  padding-top: 5px;
+  text-align: right;
+  font-size: 0.85em; }
 
 .index_content {
   clear: both; }
@@ -1394,8 +1394,10 @@ table.dashboard {
   letter-spacing: 0.15em;
   padding: 3px 5px 2px 5px;
   font-size: 0.8em; }
-  .status.published, .status.complete, .status.completed, .status.green {
+  .status.ok, .status.published, .status.complete, .status.completed, .status.green {
     background: #8daa92; }
+  .status.warn, .status.warning, .status.orange {
+    background: #e29b20; }
   .status.error, .status.errored, .status.red {
     background: #d45f53; }
 
