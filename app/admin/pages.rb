@@ -30,7 +30,20 @@ ActiveAdmin.register Page do
 
   show do |page|
     attributes = page.class.columns.collect{|column| column.name.to_sym } - [:controller_path] + [:url]
-    attributes_table *attributes
+    attributes_table *attributes do
+      table do
+        page.page_contents.each do |content|
+          tr do
+            th do
+              I18n.t("active_admin_pages.#{content.key}")
+            end
+            td do
+              content.content.html_safe unless content.content.nil?
+            end
+          end
+        end
+      end
+    end
   end
 
   form do |f|
