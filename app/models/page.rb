@@ -70,9 +70,10 @@ class Page < ActiveRecord::Base
 
         ignored_namespaces = ApplicationController.managable_content_ignore_namespace
         ignored_namespaces << ActiveAdmin::Configuration.default_namespace.to_s
+        ignored_namespaces << 'rails'
 
         valid_controllers = controller_paths.uniq.select do |controller_path|
-          !ignored_namespaces.detect do |ignored|
+          !controller_path.empty? && !ignored_namespaces.detect do |ignored|
             controller_path.start_with?(ignored)
           end
         end
@@ -85,20 +86,22 @@ class Page < ActiveRecord::Base
   end
 
   def url
-    route = Rails.application.routes.routes.find { |route| route.requirements[:controller] == controller_path}
-    generate_route = lambda { |action| Rails.application.routes.generate(:controller => route.requirements[:controller], :action => action) }
-    url = nil
+    route, url = Rails.application.routes.routes.find { |route| route.requirements[:controller] == controller_path}, nil
 
-    #first try with index
-    begin
-      url = generate_route.call(:index)
-    rescue ActionController::RoutingError
-    end
+    if route
+      generate_route = lambda { |action| Rails.application.routes.generate(:controller => route.requirements[:controller], :action => action) }
 
-    #if didn't exist, try with show
-    begin
-      url = generate_route.call(:show) if url.nil?
-    rescue ActionController::RoutingError
+      #first try with index
+      begin
+        url = generate_route.call(:index)
+      rescue ActionController::RoutingError
+      end
+
+      #if didn't exist, try with show
+      begin
+        url = generate_route.call(:show) if url.nil?
+      rescue ActionController::RoutingError
+      end
     end
 
     url
