@@ -19,7 +19,7 @@
 			  <td><%= page.title %></td>
 			  <td><%= l(page.updated_at, :format => :short) %></td>
 			  <td>
-          <%= icon_link_to(:edit, resource_path(page)) %>
+          <%= icon_link_to(:edit, edit_resource_path(page)) %>
           <%= icon_link_to(:delete, delete_resource_path(page)) %>
         </td>
 	    </tr>

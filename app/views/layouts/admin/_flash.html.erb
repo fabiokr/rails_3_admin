@@ -3,8 +3,10 @@
 <% end %>
 
 <% begin %>
-  <% resource.errors.full_messages.each do |msg| %>
-    <h4 class="alert_error"><%= msg %></h4>
+  <% unless resource.nil? %>
+    <% resource.errors.full_messages.each do |msg| %>
+      <h4 class="alert_error"><%= msg %></h4>
+    <% end %>
   <% end %>
 <% rescue ActiveRecord::RecordNotFound; end %>
 

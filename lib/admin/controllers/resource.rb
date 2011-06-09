@@ -2,8 +2,6 @@
 # for the index, new, create, edit, update, delete and destroy actions.
 class Admin::Controllers::Resource < Admin::Controllers::Base
 
-  INDEX_BREADCRUMB_ACTIONS = ['index', 'edit', 'update', 'delete', 'destroy']
-
   before_filter :resource_breadcrumbs
   helper_method :sort_column, :sort_direction
 
@@ -34,13 +32,19 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
     url_action = action_name
     url_action = nil if url_action == 'create' || url_action == 'update' || url_action == 'destroy'
 
-    if INDEX_BREADCRUMB_ACTIONS.include?(action_name)
+    if action_name != 'new' && action_name != 'create'
       add_breadcrumb I18n.t("#{i18n_controller_namespace}.index"), collection_path
     end
 
-    if action_name != 'index'
-      add_breadcrumb I18n.t("#{i18n_controller_namespace}.#{i18n_action_name}"), Proc.new { |c| resource_path(resource) }
+    if action_name == 'show'
+      proc = Proc.new { |c| resource_path(resource) }
+    elsif action_name == 'edit' || action_name == 'update'
+      proc = Proc.new { |c| edit_resource_path(resource) }
+    elsif action_name == 'delete' || action_name == 'destroy'
+      proc = Proc.new { |c| delete_resource_path(resource) }
     end
+
+    add_breadcrumb I18n.t("#{i18n_controller_namespace}.#{i18n_action_name}"), proc
   end
 
   def sort
@@ -54,7 +58,7 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
   end
 
   def sort_column
-    self.class.resource_class.column_names.include?(params[:sort]) ? params[:sort] : nil
+    resource_class.column_names.include?(params[:sort]) ? params[:sort] : nil
   end
 
   def sort_direction
