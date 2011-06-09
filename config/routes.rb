@@ -6,6 +6,7 @@ ActiveAdminBase::Application.routes.draw do
   namespace 'admin' do
     resource :dashboard, :only => [:show]
     resource :demo, :only => [:show]
+    resources :pages
   end
 
   resources :homes, :only => [:index]
