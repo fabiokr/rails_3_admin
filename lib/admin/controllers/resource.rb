@@ -32,19 +32,19 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
     url_action = action_name
     url_action = nil if url_action == 'create' || url_action == 'update' || url_action == 'destroy'
 
-    if action_name != 'new' && action_name != 'create'
-      add_breadcrumb I18n.t("#{i18n_controller_namespace}.index"), collection_path
+    if i18n_action_name != 'new'
+      add_breadcrumb resource_class.model_name.human.pluralize, collection_path
     end
 
-    if action_name == 'show'
+    if i18n_action_name == 'show'
       proc = Proc.new { |c| resource_path(resource) }
-    elsif action_name == 'edit' || action_name == 'update'
+    elsif i18n_action_name == 'edit'
       proc = Proc.new { |c| edit_resource_path(resource) }
-    elsif action_name == 'delete' || action_name == 'destroy'
+    elsif i18n_action_name == 'delete'
       proc = Proc.new { |c| delete_resource_path(resource) }
     end
 
-    add_breadcrumb(I18n.t("#{i18n_controller_namespace}.#{i18n_action_name}"), proc) unless proc.nil?
+    add_breadcrumb(I18n.t("admin.#{i18n_action_name}_resource", :resource_name => resource.class.model_name.human), proc) unless proc.nil?
   end
 
   def sort

@@ -1,7 +1,7 @@
 <% editable = true if editable.nil? %>
 <article class="module width_full">
   <%= form_for(@page) do |f| %>
-	  <header><h3><%= title %></h3></header>
+	  <header><h3><%= form_title(f.object) %></h3></header>
 		  <div class="module_content">
 				  <fieldset>
             <%= f.label :title %>

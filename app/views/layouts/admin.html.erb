@@ -31,14 +31,10 @@
 	</section><!-- end of secondary bar -->
 
 	<aside id="sidebar" class="column">
-		<form class="quick_search">
-			<input type="text" value="<%= t('admin.quick_search') %>" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
-		</form>
-		<hr/>
-		<h3><%= t('admin.pages.title') %></h3>
+		<h3><%= Admin::Page.model_name.human.pluralize %></h3>
     <nav>
       <ul>
-			  <li class="icn_edit_article"><%= link_to t('admin.pages.index'), admin_pages_path %></li>
+			  <li class="icn_edit_article"><%= link_to t('admin.index_resource', :resource_name => Admin::Page.model_name.human.pluralize), admin_pages_path %></li>
 		  </ul>
 		  <h3><%= t('admin.admin') %></h3>
 		  <ul class="toggle">

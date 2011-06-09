@@ -29,6 +29,11 @@ module AdminHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
 
+  def form_title(resource)
+    resource_name = resource.class.model_name.human
+    resource.new_record? ? t('admin.new_resource', :resource_name => resource_name) : t('admin.edit_resource', :resource_name => resource_name)
+  end
+
   private
 
   def resource_errors(resource)

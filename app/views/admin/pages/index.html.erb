@@ -1,6 +1,6 @@
 <article class="module width_full">
   <header>
-    <h3><%= Admin::Page.model_name.plural %> (<%= @pages.total_count %>)</h3>
+    <h3><%= Admin::Page.model_name.human.pluralize %> (<%= @pages.total_count %>)</h3>
     <%= paginate @pages %>
   </header>
   <table class="data-table" cellspacing="0">

@@ -13,13 +13,13 @@ en:
     edit: Edit
     delete: Delete
     delete_confirmation: "Are you sure you want to delete this %{resource_name}?"
+    index_resource: "View %{resource_name}"
+    new_resource: "New %{resource_name}"
+    edit_resource: "Edit %{resource_name}"
+    delete_resource: "Delete %{resource_name}"
+    show_resource: "%{resource_name}"
     content:
       body: Main Content
-    sessions:
-      destroy: Logout
-    pages:
-      title: Pages
-      index: View Pages
-      show: Page
-      edit: Edit Page
+    titles:
+      pages: Pages
 
