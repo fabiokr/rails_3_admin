@@ -15,9 +15,6 @@ end
 class HomeNoContentMocksController < ApplicationController
 end
 
-class Admin::MocksController < ApplicationController
-end
-
 class IgnoredMocksController < ApplicationController
 end
 
@@ -49,10 +46,6 @@ class PageTest < ActiveSupport::TestCase
       resources :other_mocks
       resources :home_no_content_mocks
       resources :ignored_mocks
-
-      namespace :admin do
-        resources :mocks
-      end
     end
   end
 

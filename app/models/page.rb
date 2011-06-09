@@ -69,7 +69,6 @@ class Page < ActiveRecord::Base
         end
 
         ignored_namespaces = ApplicationController.managable_content_ignore_namespace
-        ignored_namespaces << ActiveAdmin::Configuration.default_namespace.to_s
         ignored_namespaces << 'rails'
 
         valid_controllers = controller_paths.uniq.select do |controller_path|

@@ -1,9 +1,0 @@
-en:
-  active_admin_pages:
-    details: Details
-    contents: Contents
-    body: Main Content
-    help_title: The title attribute is used as the page title
-    help_description: The description attribute is used as the page meta-description tag
-    help_tags: The tags attribute is used as the page meta-tags tag
-
