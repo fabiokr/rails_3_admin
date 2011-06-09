@@ -2,7 +2,7 @@
 # for the index, new, create, edit, update, delete and destroy actions.
 class Admin::Controllers::Resource < Admin::Controllers::Base
 
-  before_filter :resource_breadcrumbs
+  before_filter :collection_breadcrumbs, :resource_breadcrumbs
   helper_method :sort_column, :sort_direction
 
   inherit_resources
@@ -12,13 +12,21 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
   protected
 
   # Overrides default to add pagination and sorting
-  def collection
-    get_collection_ivar || begin
-      c = end_of_association_chain
-      c = c.sorted(sort) if c.respond_to?(:sorted)
-      c = c.page(params[:page])
-      set_collection_ivar(c.respond_to?(:scoped) ? c.scoped : c.all)
+  def end_of_association_chain
+    chain = super
+    chain = chain.sorted(sort) if chain.respond_to?(:sorted)
+    chain = chain.page(params[:page])
+    chain
+  end
+
+  def collection_breadcrumbs
+    if parent?
+      # TODO Right now we're extracting the parent_url for the parent collections by hand.
+      # Better try to find an automatic way to determine the parent collection url
+      add_breadcrumb(Proc.new { |c| parent.class.model_name.human.pluralize }, Proc.new { |c| parent_url.match(/(.*)\/.*/)[1] })
     end
+
+    add_breadcrumb(resource_class.model_name.human.pluralize, Proc.new { |c| collection_url parent? ? parent : nil })
   end
 
   def resource_breadcrumbs
@@ -28,13 +36,6 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
     i18n_action_name = 'new' if i18n_action_name == 'create'
     i18n_action_name = 'edit' if i18n_action_name == 'update'
     i18n_action_name = 'delete' if i18n_action_name == 'destroy'
-
-    url_action = action_name
-    url_action = nil if url_action == 'create' || url_action == 'update' || url_action == 'destroy'
-
-    if i18n_action_name != 'new'
-      add_breadcrumb resource_class.model_name.human.pluralize, collection_path
-    end
 
     proc = case action_name
       when 'new' then                        Proc.new { |c| new_resource_path }
