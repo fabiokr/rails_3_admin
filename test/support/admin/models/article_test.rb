@@ -61,9 +61,7 @@ module Admin
         end
 
         test 'should have sorted scope' do
-          articles = [Factory(self.class.article_factory, :published_at => (DateTime.now + 1)), Factory(self.class.article_factory, :published_at => (DateTime.now + 2))]
-
-          assert_equal [articles[1], articles[0]], self.class.article_model.sorted.all
+          assert self.class.article_model.sorted.all
         end
 
         test 'should have for_url_param scope' do

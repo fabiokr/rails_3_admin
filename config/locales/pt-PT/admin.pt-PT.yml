@@ -14,6 +14,7 @@
     delete: Remover
     order: Ordem
     drag: reposicionar
+    draft: Não publicado(a)
     index_resource: "Exibir %{resource_name}"
     new_resource: "Novo(a) %{resource_name}"
     edit_resource: "Editar %{resource_name}"

@@ -42,7 +42,7 @@ module Admin
         test 'should have sorted scope' do
           Factory(self.class.category_factory)
 
-          assert_equal self.class.category_model.order('name ASC').all, self.class.category_model.sorted.all
+          assert_equal self.class.category_model.order('position ASC').all, self.class.category_model.sorted.all
         end
 
         test 'should have for_url_param scope' do
