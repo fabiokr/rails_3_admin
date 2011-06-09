@@ -12,20 +12,27 @@
 
 ActiveRecord::Schema.define(:version => 20110529195652) do
 
-  create_table "active_admin_comments", :force => true do |t|
-    t.integer  "resource_id",   :null => false
-    t.string   "resource_type", :null => false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.text     "body"
+  create_table "admin_page_contents", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "key"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "namespace"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+  add_index "admin_page_contents", ["page_id", "key"], :name => "index_admin_page_contents_on_page_id_and_key", :unique => true
+  add_index "admin_page_contents", ["page_id"], :name => "index_admin_page_contents_on_page_id"
+
+  create_table "admin_pages", :force => true do |t|
+    t.string   "controller_path"
+    t.string   "title"
+    t.string   "description"
+    t.string   "tags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_pages", ["controller_path"], :name => "index_admin_pages_on_controller_path", :unique => true
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -62,27 +69,5 @@ ActiveRecord::Schema.define(:version => 20110529195652) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "fk_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
   add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
-
-  create_table "page_contents", :force => true do |t|
-    t.integer  "page_id"
-    t.string   "key"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "page_contents", ["page_id", "key"], :name => "index_page_contents_on_page_id_and_key", :unique => true
-  add_index "page_contents", ["page_id"], :name => "index_page_contents_on_page_id"
-
-  create_table "pages", :force => true do |t|
-    t.string   "controller_path"
-    t.string   "title"
-    t.string   "description"
-    t.string   "tags"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "pages", ["controller_path"], :name => "index_pages_on_controller_path", :unique => true
 
 end

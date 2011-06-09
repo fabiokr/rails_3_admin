@@ -1,6 +1,6 @@
-class CreatePages < ActiveRecord::Migration
+class CreateAdminPages < ActiveRecord::Migration
   def self.up
-    create_table :pages do |t|
+    create_table :admin_pages do |t|
       t.string :controller_path
       t.string :title
       t.string :description
@@ -9,10 +9,10 @@ class CreatePages < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :pages, :controller_path, :unique => true
+    add_index :admin_pages, :controller_path, :unique => true
   end
 
   def self.down
-    drop_table :pages
+    drop_table :admin_pages
   end
 end
