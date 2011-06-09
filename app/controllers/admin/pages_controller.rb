@@ -5,5 +5,12 @@ module Admin
     before_filter do
       Page.generate!
     end
+
+    protected
+
+    def collection
+      super
+      @pages = @pages.available
+    end
   end
 end
