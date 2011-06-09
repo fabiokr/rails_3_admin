@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Admin::Controllers::HasContent
 
-  managable_content_ignore_namespace 'ckeditor'
+  managable_content_ignore_namespace 'devise', 'ckeditor'
   protect_from_forgery
   layout :layout
 
