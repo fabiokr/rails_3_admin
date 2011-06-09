@@ -33,31 +33,14 @@
 	<aside id="sidebar" class="column">
 		<h3><%= Admin::Page.model_name.human.pluralize %></h3>
     <nav>
-      <ul>
-			  <li class="icn_edit_article"><%= link_to t('admin.index_resource', :resource_name => Admin::Page.model_name.human.pluralize), admin_pages_path %></li>
-		  </ul>
-		  <h3><%= t('admin.admin') %></h3>
-		  <ul class="toggle">
-			  <li class="icn_jump_back"><%= link_to t('admin.sessions.destroy'), destroy_admin_user_session_path %></li>
-		  </ul>
-		  <!--
-		  <ul>
-			  <li class="icn_new_article"><a href="#">Categories</a></li>
-			  <li class="icn_edit_article"><a href="#">Categories</a></li>
-			  <li class="icn_categories"><a href="#">Categories</a></li>
-			  <li class="icn_tags"><a href="#">Tags</a></li>
-			  <li class="icn_add_user"><a href="#">Add New User</a></li>
-			  <li class="icn_view_users"><a href="#">View Users</a></li>
-			  <li class="icn_profile"><a href="#">Your Profile</a></li>
-			  <li class="icn_folder"><a href="#">File Manager</a></li>
-			  <li class="icn_photo"><a href="#">Gallery</a></li>
-			  <li class="icn_audio"><a href="#">Audio</a></li>
-			  <li class="icn_video"><a href="#">Video</a></li>
-			  <li class="icn_settings"><a href="#">Options</a></li>
-			  <li class="icn_security"><a href="#">Security</a></li>
-			  <li class="icn_jump_back"><%= link_to t('admin.sessions.destroy'), destroy_admin_user_session_path %></li>
-		  </ul>
-		  -->
+      <% Rails.application.config.admin_menu.each do |menu| %>
+        <h3><%= menu.title %></h3>
+        <% menu.each do |item| %>
+          <%= content_tag 'li', :class => item.icon ? "icn_#{item.icon}" : nil do %>
+            <%= link_to item.title, item.path.is_a?(Symbol) ? self.send(item.path) : item.path %>
+          <% end %>
+        <% end %>
+      <% end %>
     </nav>
 		<footer>
 			<hr />
