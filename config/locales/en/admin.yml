@@ -15,8 +15,11 @@ en:
     delete_confirmation: "Are you sure you want to delete this %{resource_name}?"
     content:
       body: Main Content
+    sessions:
+      destroy: Logout
     pages:
-      index: Pages
+      title: Pages
+      index: View Pages
       show: Page
       edit: Edit Page
 

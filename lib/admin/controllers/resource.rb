@@ -44,7 +44,7 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
       proc = Proc.new { |c| delete_resource_path(resource) }
     end
 
-    add_breadcrumb I18n.t("#{i18n_controller_namespace}.#{i18n_action_name}"), proc
+    add_breadcrumb(I18n.t("#{i18n_controller_namespace}.#{i18n_action_name}"), proc) unless proc.nil?
   end
 
   def sort
