@@ -13,6 +13,16 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
 
   protected
 
+  # Overrides default to add pagination and sorting
+  def collection
+    get_collection_ivar || begin
+      c = end_of_association_chain
+      c = c.sorted(sort) if c.respond_to?(:sorted)
+      c = c.page(params[:page])
+      set_collection_ivar(c.respond_to?(:scoped) ? c.scoped : c.all)
+    end
+  end
+
   def resource_breadcrumbs
     i18n_controller_namespace = controller_path.gsub("/", ".")
 

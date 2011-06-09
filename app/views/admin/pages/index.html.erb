@@ -1,0 +1,31 @@
+<article class="module width_full">
+  <header>
+    <h3><%= Admin::Page.model_name.plural %> (<%= @pages.total_count %>)</h3>
+    <%= paginate @pages %>
+  </header>
+  <table class="data-table" cellspacing="0">
+  <thead>
+	  <tr>
+			  <th><%= Admin::Page.human_attribute_name(:url) %></th>
+			  <th><%= sortable 'title', Admin::Page.human_attribute_name(:title) %></th>
+			  <th><%= sortable 'updated_at', Admin::Page.human_attribute_name(:updated_at) %></th>
+			  <th><%= t('admin.actions') %></th>
+	  </tr>
+  </thead>
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+			  <td><%= link_to_if (url = page.url), url, url %></td>
+			  <td><%= page.title %></td>
+			  <td><%= l(page.updated_at, :format => :short) %></td>
+			  <td>
+          <%= icon_link_to(:edit, resource_path(page)) %>
+          <%= icon_link_to(:delete, delete_resource_path(page)) %>
+        </td>
+	    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  <footer><%= paginate @pages %></footer>
+</article>
+
