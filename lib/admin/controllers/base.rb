@@ -10,7 +10,7 @@ module Admin
       attr_reader :resource
       helper_method :resource
 
-      add_breadcrumb I18n.t('app'), :root_path
+      add_breadcrumb I18n.t('app'), :admin_dashboard_path
 
       protected
 
