@@ -10,6 +10,7 @@ gem 'responders'
 gem 'compass', ">= 0.11.1"
 gem 'breadcrumbs_on_rails'
 gem 'kaminari'
+gem 'acts_as_list'
 gem 'ckeditor'
 gem 'paperclip'
 

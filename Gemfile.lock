@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.7)
       activesupport (= 3.0.7)
     activesupport (3.0.7)
+    acts_as_list (0.1.2)
     ansi (1.2.5)
     arel (2.0.10)
     bcrypt-ruby (2.1.4)
@@ -146,6 +147,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list
   breadcrumbs_on_rails
   capybara
   ckeditor
