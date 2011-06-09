@@ -462,6 +462,10 @@ section#main.login {
     padding: 15px 10px; }
   input[type=image] {
     margin-right: 10px; }
+  span.handle {
+    padding-left: 20px;
+    background: url(../../images/admin/sort_undefined.png) no-repeat left center;
+  }
 }
 
 ul.tabs {
@@ -755,4 +759,6 @@ nav.pagination {
     }
   }
 }
+
+.handle:hover{ cursor: move; }
 

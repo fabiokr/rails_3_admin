@@ -1,0 +1,25 @@
+"pt-PT":
+  admin:
+    admin: Admin
+    dashboard: Painel de Controle
+    view_site: Exibir Site
+    quick_search: Busca Rápida
+    sign_out: Sair
+    content: Conteúdo
+    actions: Acções
+    confirm: Sim
+    cancel: Cancelar
+    save: Gravar
+    edit: Editar
+    delete: Remover
+    order: Ordem
+    drag: reposicionar
+    index_resource: "Exibir %{resource_name}"
+    new_resource: "Novo(a) %{resource_name}"
+    edit_resource: "Editar %{resource_name}"
+    show_resource: "%{resource_name}"
+    delete_resource: "Remover %{resource_name}"
+    delete_resource_confirmation: "Você tem certeza que deseja remover este(a) %{resource_name}?"
+    content:
+      body: Conteúdo Principal
+

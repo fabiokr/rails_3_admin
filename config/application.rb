@@ -33,7 +33,7 @@ module ActiveAdminBase
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
-    config.action_view.javascript_expansions[:admin_defaults] = %w(lib/modernizr lib/selectivzr lib/jquery lib/jquery_ujs lib/plugins/jquery.equalHeight ckeditor/ckeditor admin)
+    config.action_view.javascript_expansions[:admin_defaults] = %w(lib/modernizr lib/selectivzr lib/jquery lib/jquery-ui lib/jquery_ujs lib/plugins/jquery.equalHeight ckeditor/ckeditor admin)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

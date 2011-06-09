@@ -12,6 +12,8 @@ en:
     save: Save
     edit: Edit
     delete: Delete
+    order: Order
+    drag: drag
     index_resource: "View %{resource_name}"
     new_resource: "New %{resource_name}"
     edit_resource: "Edit %{resource_name}"
