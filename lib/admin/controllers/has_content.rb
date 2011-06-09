@@ -1,4 +1,4 @@
-module ActiveAdminPages
+module Admin
   module Controllers
     module HasContent
       extend ActiveSupport::Concern

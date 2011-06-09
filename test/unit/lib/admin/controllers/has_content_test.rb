@@ -1,16 +1,16 @@
 require 'test_helper'
 
-class ActiveAdminPages::HasContentMock < ApplicationController
-  include ActiveAdminPages::Controllers::HasContent
+class Admin::HasContentMock < ApplicationController
+  include Admin::Controllers::HasContent
 
   managable_content_ignore_namespace 'another'
   managable_content_for :body, :side
 end
 
-class ActiveAdminPages::HasContentTest < ActiveSupport::TestCase
+class Admin::HasContentTest < ActiveSupport::TestCase
 
   def setup
-    @controller = ActiveAdminPages::HasContentMock.new
+    @controller = Admin::HasContentMock.new
 
     @page = Factory(:page, :controller_path => @controller.controller_path)
     @content_body = Factory(:page_content, :page => @page, :key => 'body')
@@ -19,11 +19,11 @@ class ActiveAdminPages::HasContentTest < ActiveSupport::TestCase
   end
 
   test 'should configure content types' do
-    assert_equal [:body, :side], ActiveAdminPages::HasContentMock.managable_content_for
+    assert_equal [:body, :side], Admin::HasContentMock.managable_content_for
   end
 
   test 'should configure ignored namespace' do
-    assert ActiveAdminPages::HasContentMock.managable_content_ignore_namespace.include?('another')
+    assert Admin::HasContentMock.managable_content_ignore_namespace.include?('another')
   end
 
   test 'should retrieve correct page content with helper' do
