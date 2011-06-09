@@ -1,0 +1,22 @@
+<article class="module width_quarter">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
+	  <header><h3><%= t('devise.views.passwords.edit') %></h3></header>
+	  <div class="module_content">
+			  <fieldset>
+				  <%= f.label :password, t('devise.views.passwords.new_password_field') %>
+				  <%= f.password_field :password %>
+			  </fieldset>
+        <fieldset>
+				  <%= f.label :password_confirmation, t('devise.views.passwords.new_password_confirmation_field') %>
+				  <%= f.password_field :password_confirmation %>
+			  </fieldset>
+	  </div>
+	  <footer>
+		  <div class="submit_link">
+        <%= f.submit t('devise.views.passwords.edit_submit'), :class => 'alt_btn' %>
+		  </div>
+	  </footer>
+  <% end %>
+</article>
+

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title><%= "#{t('app')} :: #{t('admin.admin')}" %></title>
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag 'admin.css' %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag 'admin-ie.css' %><![endif]-->
+</head>
+<body>
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title"><%= link_to t('app'), admin_path %></h1>
+		</hgroup>
+	</header> <!-- end of header bar -->
+
+	<section id="main" class="column login">
+    <%= render 'layouts/admin/flash' %>
+    <%= yield %>
+	</section>
+
+  <%= javascript_include_tag :admin_defaults %>
+</body>
+</html>
+

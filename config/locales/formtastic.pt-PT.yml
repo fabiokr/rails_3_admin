@@ -1,9 +1,0 @@
-"pt-PT":
-  formtastic:
-    :yes: 'Sim'
-    :no: 'Não'
-    :create: 'Criar %{model}'
-    :update: 'Atualizar %{model}'
-    :submit: 'Enviar %{model}'
-    :required: 'obrigatório'
-

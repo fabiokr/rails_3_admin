@@ -48,3 +48,23 @@ en:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+    views:
+      sessions:
+        new: Sign in
+        email_field: Email
+        password_field: Password
+        remember_me_field: Remember me
+      passwords:
+        new: Forgot your password?
+        new_submit: Send me reset password instructions
+        edit: Change your password
+        edit_submit: Change my password
+        new_password_field: New password
+        new_password_confirmation_field: Password confirmation
+        reset_email:
+          hello: 'Hello %{user}!'
+          requested: Someone has requested a link to change your password, and you can do this through the link below.
+          link: Change my password
+          ignore: "If you didn't request this, please ignore this email."
+          password_change: "Your password won't change until you access the link above and create a new one."
+

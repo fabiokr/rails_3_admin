@@ -4,6 +4,11 @@ gem 'rake', '~> 0.8.7' #Provisory until new Rails version fixes rake 0.9.0 integ
 gem 'rails', '3.0.7'
 
 #libraries
+gem 'devise'
+gem 'responders'
+gem 'compass', ">= 0.11.1"
+gem 'breadcrumbs_on_rails'
+gem 'kaminari'
 gem 'ckeditor'
 gem 'paperclip'
 

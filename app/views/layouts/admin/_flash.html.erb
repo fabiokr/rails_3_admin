@@ -1,0 +1,8 @@
+<% flash().each do |name, msg| %>
+  <h4 class="alert_<%= name.to_s %>"><%= msg %></h4>
+<% end %>
+
+<% resource_messages.each do |msg| %>
+  <h4 class="alert_error"><%= msg %></h4>
+<% end %>
+

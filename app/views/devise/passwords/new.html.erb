@@ -1,0 +1,17 @@
+<article class="module width_quarter">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+	  <header><h3><%= t('devise.views.passwords.new') %></h3></header>
+	  <div class="module_content">
+			  <fieldset>
+				  <%= f.label :email, t('devise.views.sessions.email_field') %>
+				  <%= f.email_field :email %>
+			  </fieldset>
+	  </div>
+	  <footer>
+		  <div class="submit_link">
+        <%= f.submit t('devise.views.passwords.new_submit'), :class => 'alt_btn' %>
+		  </div>
+	  </footer>
+  <% end %>
+</article>
+

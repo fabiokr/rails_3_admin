@@ -28,10 +28,12 @@ module ActiveAdminBase
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.i18n.locale = 'pt-PT'
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+    config.action_view.javascript_expansions[:admin_defaults] = %w(lib/modernizr lib/selectivzr lib/jquery lib/jquery_ujs lib/plugins/jquery.equalHeight ckeditor/ckeditor admin)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -46,3 +48,5 @@ module ActiveAdminBase
     end
   end
 end
+
+Sass::Plugin.options[:template_location] = { 'app/stylesheets' => 'tmp/stylesheets' }

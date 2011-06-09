@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8"/>
+	<title><%= "#{t('app')} :: #{t('admin.admin')}" %></title>
+  <%= csrf_meta_tag %>
+  <%= tag :meta, :name => 'locale', :content => I18n.locale %>
+  <%= stylesheet_link_tag 'admin.css' %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag 'admin-ie.css' %><![endif]-->
+</head>
+<body>
+	<header id="header">
+		<hgroup>
+			<h1 class="site_title"><%= link_to t('app'), admin_path %></h1>
+			<h2 class="section_title"><%= t('admin.dashboard') %></h2>
+      <div class="btn_view_site"><a href="/" target="_blank"><%= t('admin.view_site') %></a></div>
+		</hgroup>
+	</header> <!-- end of header bar -->
+
+	<section id="secondary_bar">
+		<div class="user">
+			<p><%= current_admin_user.email %></p>
+      <%= link_to t('admin.sign_out'), destroy_admin_user_session_path, :class => 'logout_user', :title => t('admin.sign_out') %>
+		</div>
+		<div class="breadcrumbs_container">
+      <nav class="breadcrumbs">
+        <%= render_breadcrumbs :separator => content_tag(:div, '', :class => 'breadcrumb_divider'), :builder => Admin::Helpers::BreadcrumbBuilder %>
+      </nav>
+      <div class="ajax_loader_container"></div>
+		</div>
+	</section><!-- end of secondary bar -->
+
+	<aside id="sidebar" class="column">
+		<form class="quick_search">
+			<input type="text" value="<%= t('admin.quick_search') %>" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+		</form>
+		<hr/>
+		<h3>Teste</h3>
+    <nav>
+      <!--
+		  <ul>
+			  <li class="icn_new_article"></li>
+			  <li class="icn_edit_article"></li>
+			  <li class="icn_categories"><a href="#">Categories</a></li>
+			  <li class="icn_tags"><a href="#">Tags</a></li>
+		  </ul>
+		  <h3>Users</h3>
+		  <ul class="toggle">
+			  <li class="icn_add_user"><a href="#">Add New User</a></li>
+			  <li class="icn_view_users"><a href="#">View Users</a></li>
+			  <li class="icn_profile"><a href="#">Your Profile</a></li>
+		  </ul>
+		  <h3>Media</h3>
+		  <ul class="toggle">
+			  <li class="icn_folder"><a href="#">File Manager</a></li>
+			  <li class="icn_photo"><a href="#">Gallery</a></li>
+			  <li class="icn_audio"><a href="#">Audio</a></li>
+			  <li class="icn_video"><a href="#">Video</a></li>
+		  </ul>
+		  <h3>Admin</h3>
+		  <ul class="toggle">
+			  <li class="icn_settings"><a href="#">Options</a></li>
+			  <li class="icn_security"><a href="#">Security</a></li>
+			  <li class="icn_jump_back"><a href="#">Logout</a></li>
+		  </ul>
+      -->
+    </nav>
+		<footer>
+			<hr />
+			<p><strong>Copyright &copy; <%= Time.now.year %> <%= t('app') %></strong></p>
+			<p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
+		</footer>
+	</aside><!-- end of sidebar -->
+
+	<section id="main" class="column">
+    <%= render 'layouts/admin/flash' %>
+    <%= yield %>
+	</section>
+  <%= javascript_include_tag :admin_defaults %>
+</body>
+</html>
+
