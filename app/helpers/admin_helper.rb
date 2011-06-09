@@ -31,7 +31,15 @@ module AdminHelper
 
   def form_title(resource)
     resource_name = resource.class.model_name.human
-    resource.new_record? ? t('admin.new_resource', :resource_name => resource_name) : t('admin.edit_resource', :resource_name => resource_name)
+    if action_name == 'new' || action_name == 'create'
+      t('admin.new_resource', :resource_name => resource_name)
+    elsif action_name == 'edit' || action_name == 'update'
+      t('admin.edit_resource', :resource_name => resource_name)
+    elsif action_name == 'show'
+      t('admin.show_resource', :resource_name => resource_name)
+    elsif action_name == 'delete'
+      t('admin.delete_resource_confirmation', :resource_name => resource_name)
+    end
   end
 
   private

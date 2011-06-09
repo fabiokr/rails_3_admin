@@ -1,0 +1,12 @@
+<article class="module width_full">
+  <%= form_for([:admin, resource], :html => {:method => :delete}) do |f| %>
+	  <header><h3><%= form_title(f.object) %></h3></header>
+	  <footer>
+		  <div class="submit_link">
+        <%= link_to t('admin.cancel'), :back, :class => 'button' %>
+        <%= f.submit t('admin.confirm'), :class => 'alt_btn' %>
+		  </div>
+	  </footer>
+  <% end %>
+</article>
+
