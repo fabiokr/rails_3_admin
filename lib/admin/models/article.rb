@@ -13,7 +13,7 @@ module Admin
 
         scope :unpublished, where(:published_at => nil)
         scope :published, lambda { where(arel_table[:published_at].not_eq(nil)) }
-        scope :sorted, order('published_at DESC')
+        scope :sorted, order('position ASC')
         scope :for_url_param, lambda { |param| where(:slug => param) }
       end
 
