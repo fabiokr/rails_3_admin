@@ -10,6 +10,7 @@ require 'turn'
 require 'faker'
 require 'factory_girl'
 require 'capybara/rails'
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 module ActionDispatch
   class IntegrationTest
