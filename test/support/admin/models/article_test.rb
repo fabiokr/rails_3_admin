@@ -10,6 +10,8 @@ module Admin
       end
 
       included do
+        include Admin::Models::SortableTest
+
         mattr_accessor :article_model, :article_factory
 
         should have_db_column(:title).of_type(:string)

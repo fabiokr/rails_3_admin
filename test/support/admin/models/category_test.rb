@@ -13,6 +13,8 @@ module Admin
       end
 
       included do
+        include Admin::Models::SortableTest
+
         mattr_accessor :category_model, :category_factory
 
         should have_db_column(:name).of_type(:string)

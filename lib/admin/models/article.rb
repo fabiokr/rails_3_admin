@@ -4,6 +4,8 @@ module Admin
       extend ActiveSupport::Concern
 
       included do
+        include Sortable
+
         attr_accessible :title, :excerpt, :body, :published_at, :published, :category_id
 
         before_save :set_slug

@@ -4,10 +4,9 @@ module Admin
       extend ActiveSupport::Concern
 
       included do
-        acts_as_list
+        include Sortable
 
-        attr_accessor   :sort
-        attr_accessible :name, :sort
+        attr_accessible :name
 
         validates :name, :presence => true, :uniqueness => true
 
@@ -15,7 +14,6 @@ module Admin
         scope :for_url_param, lambda { |param| where(:slug => param) }
 
         before_save    :set_slug
-        after_update  :set_position_on_update
       end
 
       module ClassMethods
@@ -31,11 +29,6 @@ module Admin
         def set_slug
           name = self.name
           self.slug = name.parameterize if name
-        end
-
-        def set_position_on_update
-          new_position, self.sort = sort, nil
-          insert_at new_position unless new_position.nil?
         end
       end
     end
