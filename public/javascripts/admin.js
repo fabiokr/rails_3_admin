@@ -85,7 +85,7 @@ var admin = {
 
         $.ajax({
           type: 'post',
-          data: data + '&news_category[sort]=' + position,
+          data: data + '&' + tr.attr('model') + '[sort]=' + position,
           url: tr.attr('url'),
           complete: function(){admin.loading();}
         });

@@ -664,6 +664,13 @@ fieldset {
       border: 1px solid #77BACE;
       @include box-shadow(inset 0 2px 2px #ccc, 0 0 10px #ADDCE6); }
   }
+  iframe {
+    padding-left: 10px;
+    margin: 0 0.5%;
+    display: block;
+    float: left;
+    margin: 0 10px;
+  }
   .cke_skin_kama {
     display: block;
     float: left;

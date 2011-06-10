@@ -37,4 +37,23 @@
         subject: 'Reinicie as instruções da palavra-passe'
       unlock_instructions:
         subject: 'Instruções de desbloqueio'
+    views:
+      sessions:
+        new: Entrar
+        email_field: Email
+        password_field: Senha
+        remember_me_field: Lembrar-se de mim
+      passwords:
+        new: Esqueceu sua senha?
+        new_submit: Envie-me instruções para recriar senha
+        edit: Alterar senha
+        edit_submit: Alterar minha senha
+        new_password_field: Nova senha
+        new_password_confirmation_field: Confirmação de senha
+        reset_email:
+          hello: 'Olá %{user}!'
+          requested: Alguem requisitou um link para recriar sua senha, e você pode fazê-lo clicando no link abaixo.
+          link: Alterar minha senha
+          ignore: Se você não fez esta solicitação, por favor ignore este email.
+          password_change: Sua senha não será alterada até que você acesse o link abaixo e crie uma nova.
 
