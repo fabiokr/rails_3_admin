@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rake', '~> 0.8.7' #Provisory until new Rails version fixes rake 0.9.0 integration
-gem 'rails', '3.0.7'
+gem 'rails', '3.0.8'
 
 #libraries
 gem 'devise'
