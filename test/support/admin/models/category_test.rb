@@ -29,9 +29,16 @@ module Admin
         should_not allow_mass_assignment_of(:slug)
 
         should validate_presence_of(:name)
-        should validate_uniqueness_of(:name)
 
         should have_many(:articles)
+
+        test 'should validate uniqueness of name' do
+          category = Factory(self.class.category_factory)
+
+          assert_raise ActiveRecord::RecordInvalid do
+            Factory(self.class.category_factory, :name => category.name)
+          end
+        end
 
         test 'should save slug from name' do
           assert_equal @category.name.parameterize, @category.slug
