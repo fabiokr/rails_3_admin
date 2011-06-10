@@ -5,6 +5,7 @@ gem 'rails', '3.0.8'
 #libraries
 gem 'devise'
 gem 'inherited_resources'
+gem 'render_inheritable'
 gem 'responders'
 gem 'compass', ">= 0.11.1"
 gem 'breadcrumbs_on_rails'

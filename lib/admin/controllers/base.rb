@@ -9,15 +9,22 @@ module Admin
       layout proc{ |c| c.request.xhr? ? false : 'admin' }
       attr_reader :resource
       helper_method :resource
+      render_inheritable
 
       add_breadcrumb I18n.t('app'), :admin_dashboard_path
 
+      def self.template_lookup_path(param = nil)
+        ['admin/base']
+      end
+
       protected
 
+      # TODO Remove this maybe?
       def respond_with(*args)
         @resource = [:admin] + args
         super(*(@resource))
       end
+
     end
   end
 end
