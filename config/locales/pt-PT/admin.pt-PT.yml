@@ -8,6 +8,7 @@
     content: Conteúdo
     actions: Acções
     confirm: Sim
+    negate: Não
     cancel: Cancelar
     save: Gravar
     edit: Editar
@@ -23,4 +24,5 @@
     delete_resource_confirmation: "Você tem certeza que deseja remover este(a) %{resource_name}?"
     content:
       body: Conteúdo Principal
+      side: Conteúdo Esquerda
 

@@ -3,18 +3,7 @@
   <%= form_for(@page) do |f| %>
 	  <header><h3><%= form_title(f.object) %></h3></header>
 		  <div class="module_content">
-				  <fieldset>
-            <%= f.label :title %>
-            <%= editable ? f.text_field(:title) : f.object.title %>
-				  </fieldset>
-				  <fieldset>
-            <%= f.label :description %>
-            <%= editable ? f.text_field(:description) : f.object.description %>
-					</fieldset>
-					<fieldset>
-            <%= f.label :tags %>
-            <%= editable ? f.text_field(:tags) : f.object.tags %>
-					</fieldset>
+				  <%= render 'seo_inputs', :f => f, :editable => editable %>
 					<% controller = ActiveSupport::Dependencies.ref("#{f.object.controller_path.camelize}Controller").get %>
 					<% if !f.object.page_contents.empty? && f.object.page_contents.detect{|content| controller.managable_content_for.include? content.key.to_sym} %>
             <%= f.fields_for :page_contents do |content| %>
@@ -29,13 +18,7 @@
           <% end %>
           <div class="clear"></div>
 		  </div>
-		<% if editable %>
-	    <footer>
-		    <div class="submit_link">
-          <%= f.submit t('admin.save'), :class => 'alt_btn' %>
-		    </div>
-	    </footer>
-	  <% end %>
+		  <%= render 'form_footer', :f => f, :editable => editable %>
   <% end %>
 </article>
 

@@ -1,10 +1,11 @@
 module Admin
   class Page < ActiveRecord::Base
     extend ActiveSupport::Memoizable
+    include Admin::Models::SeoEnable
 
     has_many :page_contents, :dependent => :destroy
 
-    attr_accessible :title, :description, :tags, :page_contents_attributes
+    attr_accessible :page_contents_attributes
     accepts_nested_attributes_for :page_contents
 
     validates :controller_path, :presence => true

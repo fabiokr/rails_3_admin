@@ -1,0 +1,13 @@
+<fieldset>
+  <%= f.label :title %>
+  <%= editable ? f.text_field(:title) : f.object.title %>
+</fieldset>
+<fieldset>
+  <%= f.label :description %>
+  <%= editable ? f.text_field(:description) : f.object.description %>
+</fieldset>
+<fieldset>
+  <%= f.label :keywords %>
+  <%= editable ? f.text_field(:keywords) : f.object.keywords %>
+</fieldset>
+

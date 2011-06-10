@@ -5,6 +5,7 @@ module Admin
 
       included do
         include Sortable
+        include SeoEnable
 
         attr_accessible :title, :excerpt, :body, :published_at, :published, :category_id
 

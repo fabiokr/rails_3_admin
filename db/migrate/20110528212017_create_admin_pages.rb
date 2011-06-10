@@ -4,7 +4,7 @@ class CreateAdminPages < ActiveRecord::Migration
       t.string :controller_path
       t.string :title
       t.string :description
-      t.string :tags
+      t.string :keywords
 
       t.timestamps
     end

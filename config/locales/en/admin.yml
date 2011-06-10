@@ -7,7 +7,8 @@ en:
     sign_out: Sign out
     content: Content
     actions: Actions
-    confirm: "Yes"
+    confirm: Yes
+    negate: No
     cancel: Cancel
     save: Save
     edit: Edit

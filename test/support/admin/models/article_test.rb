@@ -11,6 +11,7 @@ module Admin
 
       included do
         include Admin::Models::SortableTest
+        include Admin::Models::SeoEnableTest
 
         mattr_accessor :article_model, :article_factory
 

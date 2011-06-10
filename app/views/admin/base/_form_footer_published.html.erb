@@ -1,0 +1,12 @@
+<footer>
+  <div class="submit_link">
+    <%= f.label :published %>
+    <% if editable %>
+      <%= f.select(:published, [[t('admin.confirm'), :true], [t('admin.negate'), :false]], :default => :false) %>
+    <% else %>
+      <%= f.object.published ? t('admin.confirm') : t('admin.negate') %>
+    <% end %>
+    <%= f.submit t('admin.save'), :class => 'alt_btn' if editable %>
+  </div>
+</footer>
+

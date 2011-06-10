@@ -29,7 +29,7 @@ class Admin::HasContentTest < ActiveSupport::TestCase
   test 'should retrieve correct page content with helper' do
     assert_equal @page.title, @controller.managable_content_for(:title)
     assert_equal @page.description, @controller.managable_content_for(:description)
-    assert_equal @page.tags, @controller.managable_content_for(:tags)
+    assert_equal @page.keywords, @controller.managable_content_for(:keywords)
     assert_equal @page.updated_at, @controller.managable_content_for(:updated_at)
   end
 

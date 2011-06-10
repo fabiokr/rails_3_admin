@@ -1,0 +1,8 @@
+<footer>
+  <div class="submit_link">
+    <%= f.label :published_at %>
+    <%= editable ? f.date_select(:published_at, :include_blank => true) : l(f.object.published_at, :format => :short) %>
+    <%= f.submit t('admin.save'), :class => 'alt_btn' if editable %>
+  </div>
+</footer>
+

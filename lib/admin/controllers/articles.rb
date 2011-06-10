@@ -23,6 +23,12 @@ module Admin
             raise ActiveRecord::RecordNotFound.new
           end
 
+          @seo = Admin::Seo.new
+          @seo.title =        @article.title
+          @seo.description =  @article.description
+          @seo.keywords =     @article.keywords
+          @seo.updated_at =   @article.updated_at
+
           add_breadcrumb @article.title, path(self.class.article_path, :category_id => @category.to_url_param, :article_id => @article.to_url_param)
         end
 

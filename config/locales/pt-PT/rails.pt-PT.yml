@@ -20,6 +20,7 @@
       default: "%A, %d de %B de %Y, %H:%Mh"
       short: "%d/%m, %H:%M hs"
       long: "%A, %d de %B de %Y, %H:%Mh"
+      url: "%Y%m%d"
     am: "am"
     pm: "pm"
 
