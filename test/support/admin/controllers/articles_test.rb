@@ -35,8 +35,13 @@ module Admin
           get :index, :category_id => @category.slug
 
           assert_equal @category, assigns[:category]
-          assert_equal @category.articles.published.sorted, assigns[:articles]
           assert_equal @controller.category_model.sorted, assigns[:categories]
+
+          if @controller.class.paginate
+            assert_equal @category.articles.published.sorted.page(nil).per(@controller.class.paginate), assigns[:articles]
+          else
+            assert_equal @category.articles.published.sorted, assigns[:articles]
+          end
         end
 
         test 'on index should set breadcrumb' do

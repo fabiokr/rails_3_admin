@@ -14,7 +14,8 @@ module Admin
       add_breadcrumb I18n.t('app'), :admin_dashboard_path
 
       def self.template_lookup_path(param = nil)
-        ['admin/base']
+        paths = super(param)
+        paths << 'admin/base'
       end
 
       protected

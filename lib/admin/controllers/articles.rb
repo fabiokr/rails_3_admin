@@ -6,8 +6,7 @@ module Admin
       included do
         before_filter :get_categories
         before_filter :get_category
-
-        mattr_accessor :category_model, :article_model, :categories_path, :category_path, :article_path, :categories_title
+        mattr_accessor :category_model, :article_model, :categories_path, :category_path, :article_path, :categories_title, :paginate
       end
 
       module ClassMethods
@@ -15,8 +14,8 @@ module Admin
 
       module InstanceMethods
         def index
-          #TODO Paginate articles
           @articles = @category.articles.published.sorted
+          @articles = @articles.page(params[:page]).per(paginate) if self.class.paginate
         end
 
         def show

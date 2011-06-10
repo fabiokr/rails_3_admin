@@ -9,14 +9,16 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
   custom_actions :resource => :delete
   respond_to :html
 
+  cattr_accessor :paginate
+  self.paginate = 25
+
   protected
 
   # Overrides default to add pagination and sorting
   def end_of_association_chain
     chain = super
     chain = chain.sorted(sort) if chain.respond_to?(:sorted)
-    chain = chain.page(params[:page])
-    chain
+    chain.page(params[:page]).per(self.class.paginate ? self.class.paginate : 999999)
   end
 
   def collection_breadcrumbs
