@@ -7,12 +7,11 @@ module Admin
         include Sortable
         include SeoEnable
 
-        attr_accessible :title, :excerpt, :body, :published_at, :published, :category_id
+        attr_accessible :excerpt, :body, :published_at, :published
 
         before_save :set_slug
 
         validates :title, :presence => true
-        validates :category_id, :presence => true
 
         scope :unpublished, where(:published_at => nil)
         scope :published, lambda { where(arel_table[:published_at].not_eq(nil)) }

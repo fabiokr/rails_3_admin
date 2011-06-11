@@ -19,11 +19,9 @@ module Admin
         should have_db_column(:excerpt).of_type(:text)
         should have_db_column(:body).of_type(:text)
         should have_db_column(:published_at).of_type(:datetime)
-        should have_db_column(:category_id).of_type(:integer)
         should have_db_column(:slug).of_type(:string)
 
         should have_db_index(:published_at)
-        should have_db_index(:category_id)
         should have_db_index(:slug)
 
         should allow_mass_assignment_of(:title)
@@ -31,13 +29,9 @@ module Admin
         should allow_mass_assignment_of(:body)
         should allow_mass_assignment_of(:published_at)
         should allow_mass_assignment_of(:published)
-        should allow_mass_assignment_of(:category_id)
         should_not allow_mass_assignment_of(:slug)
 
         should validate_presence_of(:title)
-        should validate_presence_of(:category_id)
-
-        should belong_to :category
 
         test 'should save slug from title and published date' do
           article = Factory(self.class.article_factory, :published_at => DateTime.now)
