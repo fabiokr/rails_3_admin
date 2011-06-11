@@ -1,12 +1,24 @@
 module Admin
   module Controllers
+    # This module can be used on website controllers that will access articles.
     module Articles
       extend ActiveSupport::Concern
 
       included do
         before_filter :get_categories
         before_filter :get_category
-        mattr_accessor :category_model, :article_model, :categories_path, :category_path, :article_path, :categories_title, :paginate
+        mattr_accessor :category_model, :article_model, :categories_path, :category_path,
+                       :article_path, :categories_title, :paginate
+
+        self.paginate = 10
+
+        render_inheritable
+
+        # Need to redefine after render_inheritable
+        def self.template_lookup_path(param = nil)
+          paths = super(param)
+          paths << 'articles'
+        end
       end
 
       module ClassMethods
@@ -32,7 +44,7 @@ module Admin
           add_breadcrumb @article.title, path(self.class.article_path, :category_id => @category.to_url_param, :article_id => @article.to_url_param)
         end
 
-        private
+        protected
 
         def get_categories
           @categories = self.class.category_model.sorted
