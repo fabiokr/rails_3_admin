@@ -11,7 +11,7 @@ module Admin
 
     def initialize(title, options = {})
       @title = if title.respond_to? :model_name
-        proc { options[:plural] ? title.model_name.human.pluralize : title.model_name.human }
+        proc { title.model_name.human.pluralize }
       else
         title
       end
