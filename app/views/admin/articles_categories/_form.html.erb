@@ -1,0 +1,15 @@
+<% editable = true if editable.nil? %>
+<article class="module width_full">
+  <%= form_for([:admin, resource]) do |f| %>
+	  <header><h3><%= form_title(f.object) %></h3></header>
+		  <div class="module_content">
+				  <fieldset>
+            <%= f.label :name %>
+            <%= editable ? f.text_field(:name) : f.object.name %>
+				  </fieldset>
+          <div class="clear"></div>
+		  </div>
+	    <%= render 'form_footer', :f => f, :editable => editable %>
+  <% end %>
+</article>
+

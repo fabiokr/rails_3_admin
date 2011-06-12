@@ -24,8 +24,8 @@ module AdminHelper
 
   def sortable(column, title = nil)
     title ||= column.titleize
-    css_class = column == sort_column ? "sort_#{sort_direction}" : nil
-    direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    css_class = column && sort_column && column.to_sym == sort_column.to_sym ? "sort_#{sort_direction}" : nil
+    direction = column && sort_column && column.to_sym == sort_column.to_sym && sort_direction == "asc" ? "desc" : "asc"
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
 
@@ -55,6 +55,10 @@ module AdminHelper
         end
       end
     end
+  end
+
+  def link_to_destroy(resource)
+    icon_link_to(:delete, resource_path(resource), :method => :delete, :confirm => t('admin.delete_resource_confirmation', :resource_name => resource.class.model_name.human))
   end
 
   private

@@ -15,13 +15,15 @@
     delete: Remover
     order: Ordem
     drag: reposicionar
-    draft: Não publicado(a)
+    draft: Não publicado
+    publish_now: "Usar data de hoje"
     index_resource: "Exibir %{resource_name}"
     new_resource: "Novo(a) %{resource_name}"
     edit_resource: "Editar %{resource_name}"
     show_resource: "%{resource_name}"
     delete_resource: "Remover %{resource_name}"
     delete_resource_confirmation: "Você tem certeza que deseja remover este(a) %{resource_name}?"
+    see_all: Ver todos(a)
     content:
       body: Conteúdo Principal
       side: Conteúdo Esquerda

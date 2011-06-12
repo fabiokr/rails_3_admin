@@ -16,12 +16,14 @@ en:
     order: Order
     drag: drag
     draft: Unpublished
+    publish_now: "Change to today"
     index_resource: "View %{resource_name}"
     new_resource: "New %{resource_name}"
     edit_resource: "Edit %{resource_name}"
     show_resource: "%{resource_name}"
     delete_resource: "Remove %{resource_name}"
     delete_resource: "Are you sure you want to remove this %{resource_name}?"
+    see_all: See all
     content:
       body: Main Content
     titles:

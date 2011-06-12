@@ -1,0 +1,36 @@
+<article class="module width_full">
+  <header>
+    <h3><%= resource_class.model_name.human.pluralize %> (<%= collection.total_count %>)</h3>
+    <%= paginate collection %>
+  </header>
+  <table class="data-table" cellspacing="0">
+  <thead>
+	  <tr>
+			  <th><%= resource_class.human_attribute_name(:name) %></th>
+			  <th><%= resource_class.human_attribute_name(:updated_at) %></th>
+			  <th><%= t('admin.order') %></th>
+			  <th><%= resource_class.reflect_on_association(:articles).klass.model_name.human.pluralize %></th>
+			  <th><%= t('admin.actions') %></th>
+	  </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |category| %>
+      <tr url="<%= resource_path(category) %>" model="<%= category.class.model_name.singular %>">
+			  <td><%= category.name %></td>
+			  <td><%= l(category.updated_at, :format => :short) %></td>
+			  <td><span class="handle"><%= t 'admin.drag' %></span></td>
+			  <td>
+			    <%= link_to t('admin.new_resource', :resource_name => resource_class.reflect_on_association(:articles).klass.model_name.human), send(new_articles_path, :category_id => category.id) %>
+			    |
+			    <%= link_to t('admin.index_resource', :resource_name => resource_class.reflect_on_association(:articles).klass.model_name.human.pluralize), send(articles_path, :for_category => category.id) %></td>
+			  <td>
+          <%= icon_link_to(:edit, edit_resource_path(category)) %>
+          <%= link_to_destroy category %>
+        </td>
+	    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  <footer><%= paginate collection %></footer>
+</article>
+

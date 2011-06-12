@@ -2,11 +2,11 @@
 # for the index, new, create, edit, update, delete and destroy actions.
 class Admin::Controllers::Resource < Admin::Controllers::Base
 
+  inherit_resources
+
   before_filter :collection_breadcrumbs, :resource_breadcrumbs
   helper_method :sort_column, :sort_direction
 
-  inherit_resources
-  custom_actions :resource => :delete
   respond_to :html
 
   cattr_accessor :paginate
@@ -22,12 +22,6 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
   end
 
   def collection_breadcrumbs
-    if parent?
-      # TODO Right now we're extracting the parent_url for the parent collections by hand.
-      # Better try to find an automatic way to determine the parent collection url
-      add_breadcrumb(Proc.new { |c| parent.class.model_name.human.pluralize }, Proc.new { |c| parent_url.match(/(.*)\/.*/)[1] })
-    end
-
     add_breadcrumb(resource_class.model_name.human.pluralize, Proc.new { |c| collection_url parent? ? parent : nil })
   end
 
@@ -37,13 +31,11 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
     i18n_action_name = action_name
     i18n_action_name = 'new' if i18n_action_name == 'create'
     i18n_action_name = 'edit' if i18n_action_name == 'update'
-    i18n_action_name = 'delete' if i18n_action_name == 'destroy'
 
     proc = case action_name
       when 'new' then                        Proc.new { |c| new_resource_path }
       when 'create' then                     Proc.new { |c| collection_path }
       when 'edit' then                       Proc.new { |c| edit_resource_path(resource) }
-      when 'delete' then                     Proc.new { |c| delete_resource_path(resource) }
       when 'show', 'update', 'destroy' then  Proc.new { |c| resource_path(resource) }
     end
 

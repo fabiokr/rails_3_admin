@@ -1,0 +1,35 @@
+<article class="module width_full">
+  <header>
+    <h3><%= resource_class.model_name.human.pluralize %> (<%= collection.total_count %>)</h3>
+    <%= paginate @articles %>
+  </header>
+  <table class="data-table" cellspacing="0">
+  <thead>
+	  <tr>
+			  <th><%= sortable :title,        resource_class.human_attribute_name(:title) %></th>
+			  <th><%= sortable :category_id,  resource_class.reflect_on_association(:category).klass.model_name.human %></th>
+			  <th><%= sortable :highlight,    resource_class.human_attribute_name(:highlight) %></th>
+			  <th><%= sortable :published_at, resource_class.human_attribute_name(:published_at) %></th>
+			  <th><%= sortable :updated_at,   resource_class.human_attribute_name(:updated_at) %></th>
+			  <th><%= t('admin.actions') %></th>
+	  </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |article| %>
+      <tr url="<%= resource_path(article) %>" model="academy_article">
+			  <td><%= article.title %></td>
+			  <td><%= link_to article.category.name, send(category_path, article.category) %> | <%= link_to(t('admin.see_all'), collection_path(:for_category => article.category)) %></td>
+			  <td><%= article.highlight ? t('admin.confirm') : t('admin.negate') %></td>
+			  <td><%= article.published_at ? l(article.published_at, :format => :short) : t('admin.draft') %></td>
+			  <td><%= l(article.updated_at, :format => :short) %></td>
+			  <td>
+          <%= icon_link_to(:edit, edit_resource_path(article)) %>
+          <%= link_to_destroy article %>
+        </td>
+	    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  <footer><%= paginate collection %></footer>
+</article>
+

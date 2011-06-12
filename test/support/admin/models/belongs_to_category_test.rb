@@ -15,6 +15,13 @@ module Admin
         should allow_mass_assignment_of(:category_id)
         should validate_presence_of(:category_id)
         should belong_to :category
+
+        test 'should have for_category scope' do
+          article = Factory(self.class.article_factory)
+          Factory(self.class.article_factory)
+
+          assert_equal article, self.class.article_model.for_category(article.category.id).first
+        end
       end
     end
   end

@@ -9,20 +9,24 @@ module Admin
 
     attr_accessor :title
 
-    def initialize(title)
-      @title = title
+    def initialize(title, options = {})
+      @title = if title.respond_to? :model_name
+        proc { options[:plural] ? title.model_name.human.pluralize : title.model_name.human }
+      else
+        title
+      end
     end
 
     def title
       @title.is_a?(Proc) ? @title.call : @title
     end
 
-    class Entry
+    class Item
       attr_accessor :title, :path, :icon
 
-      def initialize(title, path, options = {})
-        @title = title
+      def initialize(path, options = {})
         @path = path
+        @title = options.delete(:title)
         @icon = options.delete(:icon)
       end
 
@@ -31,8 +35,8 @@ module Admin
       end
     end
 
-    def entry(title, path, options = {})
-      push Entry.new(title, path, options)
+    def item(path, options = {})
+      push Item.new(path, options)
     end
 
     def self.configure(&block)
@@ -40,8 +44,8 @@ module Admin
       self.items
     end
 
-    def self.menu(title, &block)
-      menu = Menu.new(title)
+    def self.menu(title, options = {}, &block)
+      menu = Menu.new(title, options)
       menu.instance_eval(&block)
       self.items << menu
     end

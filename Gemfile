@@ -7,6 +7,7 @@ gem 'devise'
 gem 'inherited_resources'
 gem 'render_inheritable'
 gem 'responders'
+gem 'has_scope'
 gem 'compass', ">= 0.11.1"
 gem 'breadcrumbs_on_rails'
 gem 'kaminari'

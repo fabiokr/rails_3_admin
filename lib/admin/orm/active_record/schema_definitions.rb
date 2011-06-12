@@ -11,7 +11,7 @@ module Admin
           column :excerpt, :text
           column :body, :text
           column :published_at, :datetime
-          sortable_fields
+          column :highlight, :boolean
           timestamps
         end
 

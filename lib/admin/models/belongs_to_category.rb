@@ -6,6 +6,8 @@ module Admin
       included do
         attr_accessible :category_id
         validates :category_id, :presence => true
+
+        scope :for_category, lambda { |category_id| where(:category_id => category_id) }
       end
 
       module ClassMethods

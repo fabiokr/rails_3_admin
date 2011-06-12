@@ -1,0 +1,39 @@
+<% editable = true if editable.nil? %>
+<article class="module width_full">
+  <%= form_for([:admin, @article]) do |f| %>
+	  <header><h3><%= form_title(f.object) %></h3></header>
+		  <div class="module_content">
+	      <fieldset>
+	        <%= f.label :category_id %>
+	        <%= f.collection_select :category_id, @article.class.reflect_on_association(:category).klass.sorted.all, :id, :name %>
+	      </fieldset>
+			  <%= render 'seo_inputs', :f => f, :editable => editable %>
+			  <%= content_form_tag f, :excerpt, editable %>
+			  <%= content_form_tag f, :body, editable %>
+        <div class="clear"></div>
+		  </div>
+	    <footer>
+      <div class="submit_link">
+        <% if editable %>
+          <%= f.label :highlight %>
+          <%= f.check_box :highlight %>
+
+          <%= f.label :published_at %>
+          <%= f.date_select(:published_at, :include_blank => true) %>
+
+          <%= f.check_box :publish_now, {:checked => false}, 'true', 'false' %>
+          <%= f.label t('admin.publish_now') %>
+        <% else %>
+          <%= f.label :highlight %>
+          <%= f.check_box :highlight, :readonly => true %>
+
+          <%= f.label :published_at %>
+          <%= f.object.published_at ? l(f.object.published_at, :format => :short) : t('admin.draft') %>
+        <% end %>
+
+        <%= f.submit t('admin.save'), :class => 'alt_btn' if editable %>
+      </div>
+    </footer>
+  <% end %>
+</article>
+

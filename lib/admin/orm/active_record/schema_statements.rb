@@ -6,7 +6,7 @@ module Admin
         def article_indexes(table)
           add_index table, :published_at
           add_index table, :slug
-          sortable_indexes table
+          add_index table, :highlight
         end
 
         def category_indexes(table)

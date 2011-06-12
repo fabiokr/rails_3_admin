@@ -1,7 +1,6 @@
 module Admin
   module Controllers
     class Base < ActionController::Base
-      self.responder = Responder
       respond_to :html
 
       protect_from_forgery
