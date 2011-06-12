@@ -16,10 +16,10 @@
   </thead>
   <tbody>
     <% collection.each do |article| %>
-      <tr url="<%= resource_path(article) %>" model="academy_article">
+      <tr url="<%= resource_path(article) %>" model="<%= article.class.model_name.singular %>">
 			  <td><%= article.title %></td>
 			  <td><%= link_to article.category.name, send(category_path, article.category) %> | <%= link_to(t('admin.see_all'), collection_path(:for_category => article.category)) %></td>
-			  <td><%= article.highlight ? t('admin.confirm') : t('admin.negate') %></td>
+			  <td><%= check_box_tag :highlight, 1, article.highlight, :class => 'updatable', 'attribute' => :highlight %></td>
 			  <td><%= article.published_at ? l(article.published_at, :format => :short) : t('admin.draft') %></td>
 			  <td><%= l(article.updated_at, :format => :short) %></td>
 			  <td>

@@ -21,38 +21,6 @@ var admin = {
     $('.column').equalHeight();
   },
 
-  configurePagination: function() {
-
-    var update = function(url) {
-      admin.loading();
-      $.ajax({
-        url: url,
-        success: function(html) {
-          admin.loading();
-          $('section#main').html(html);
-        }
-      });
-    };
-
-    $('.pagination a, .data-table thead a').live('click', function() {
-      var href = $(this).attr('href');
-      if(Modernizr.history){
-        history.pushState({ path: href }, '', href);
-      }
-      update(href);
-      return false;
-    });
-
-    if(Modernizr.history){
-      $(window).bind('popstate', function(event) {
-        var state = event.originalEvent.state;
-        if(state) {
-          update(state.path);
-        }
-      });
-    }
-  },
-
   configureWysiwyg: function() {
     var wysiwygs = $('.wysiwyg');
     $.each(wysiwygs, function(i, el) {
@@ -76,7 +44,7 @@ var admin = {
       scroll: true,
       update: function(e, ui) {
         admin.loading();
-        var tr = $(ui.item.context), data = $('meta[name=csrf-param]').attr('content') + '=' + $('meta[name=csrf-token]').attr('content') + '&_method=PUT', position = null;
+        var tr = $(ui.item.context), position = null;
         indexTable.find('tr').each(function(i, el) {
           if($(el).attr('url') == tr.attr('url')) {
             position = i+1;
@@ -85,8 +53,34 @@ var admin = {
 
         $.ajax({
           type: 'post',
-          data: data + '&' + tr.attr('model') + '[sort]=' + position,
+          data: admin.data() + '&' + tr.attr('model') + '[sort]=' + position,
           url: tr.attr('url'),
+          complete: function(){admin.loading();}
+        });
+      }
+    });
+  },
+
+  configureUpdatable: function() {
+    $('.updatable').change(function() {
+      var self = $(this),
+          parent = self.parents('[url][model]:first'),
+          val = null;
+
+      if(self.attr('attribute')
+          && parent.attr('url') && parent.attr('model')) {
+        admin.loading();
+
+        if(self.attr('type') == 'checkbox') {
+          val = self.is(':checked') ? self.val() : false;
+        } else {
+          val = self.val();
+        }
+
+        $.ajax({
+          type: 'post',
+          data: admin.data() + '&' + parent.attr('model') + '['+ self.attr('attribute') +']=' + val,
+          url: parent.attr('url'),
           complete: function(){admin.loading();}
         });
       }
@@ -95,14 +89,18 @@ var admin = {
 
   loading: function() {
     $('.ajax_loader_container').toggle();
+  },
+
+  data: function() {
+    return $('meta[name=csrf-param]').attr('content') + '=' + $('meta[name=csrf-token]').attr('content') + '&_method=PUT'
   }
 };
 
 $(document).ready(function() {
   admin.configureTabs();
   admin.configureColumns();
-  admin.configurePagination();
   admin.configureWysiwyg();
   admin.configureTableSort();
+  admin.configureUpdatable();
 });
 
