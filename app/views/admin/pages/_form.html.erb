@@ -8,11 +8,8 @@
 					<% if !f.object.page_contents.empty? && f.object.page_contents.detect{|content| controller.managable_content_for.include? content.key.to_sym} %>
             <%= f.fields_for :page_contents do |content| %>
               <% if controller.managable_content_for.include? content.object.key.to_sym %>
-                <fieldset>
-                  <%= editable ? content.hidden_field(:id) : '' %>
-                  <%= content.label I18n.t("admin.content.#{content.object.key}") %>
-                  <%= editable ? content.text_area(:content, :class => 'wysiwyg') : content.object.content.html_safe %>
-                </fieldset>
+                <%= editable ? content.hidden_field(:id) : '' %>
+				        <%= content_form_tag content, :content, editable, :label => I18n.t("admin.content.#{content.object.key}") %>
               <% end %>
             <% end %>
           <% end %>

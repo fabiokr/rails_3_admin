@@ -42,6 +42,21 @@ module AdminHelper
     end
   end
 
+  def content_form_tag(form, field, editable, options = {})
+    label = options.delete(:label) || field
+
+    content_tag :fieldset do
+      content = form.label(label)
+      content << if editable
+        form.text_area(field, :class => 'wysiwyg')
+      else
+        content_tag(:div, :class => 'clear'){''} + content_tag(:div, :class => 'content') do
+          form.object.send(field).html_safe
+        end
+      end
+    end
+  end
+
   private
 
   def resource_errors(resource)

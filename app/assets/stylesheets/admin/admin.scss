@@ -613,6 +613,9 @@ fieldset {
   border: 1px solid #ccc;
   padding: 1% 0%;
   margin: 10px 0;
+  div.content {
+    padding: 1% 1%;
+  }
   label {
     display: block;
     float: left;
