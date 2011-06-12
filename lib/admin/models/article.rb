@@ -10,7 +10,7 @@ module Admin
 
         before_save :set_slug, :set_published
 
-        validates :title, :presence => true
+        validates :title, :presence => true, :uniqueness => {:scope => :category_id, :case_sensitive => false, :if => Proc.new { |article| article.respond_to?(:category_id) }}
 
         scope :unpublished, where(:published_at => nil)
         scope :published, lambda { where(arel_table[:published_at].not_eq(nil)) }
@@ -34,8 +34,7 @@ module Admin
         private
 
         def set_slug
-          published_at, title = self.published_at, self.title
-          self.slug = "#{title.parameterize}-#{I18n.l(published_at, :format => :url)}" if title && published_at
+          self.slug = "#{self.title.parameterize}" if self.title
         end
 
         def set_published

@@ -36,10 +36,22 @@ module Admin
 
         should validate_presence_of(:title)
 
-        test 'should save slug from title and published date' do
-          article = Factory(self.class.article_factory, :published_at => DateTime.now)
+        test 'should validate uniqueness of title within a category' do
+          article = Factory(self.class.article_factory)
 
-          assert_equal "#{article.title.parameterize}-#{I18n.l(article.published_at, :format => :url)}", article.slug
+          if article.respond_to? :category_id
+            assert_raise ActiveRecord::RecordInvalid do
+              Factory(self.class.article_factory, :title => article.title, :category_id => article.category_id)
+            end
+
+            Factory(self.class.article_factory, :title => article.title, :category_id => 9999)
+          end
+        end
+
+        test 'should save slug from title' do
+          article = Factory(self.class.article_factory)
+
+          assert_equal "#{article.title.parameterize}", article.slug
         end
 
         test 'should return the slug on to_url_param' do
