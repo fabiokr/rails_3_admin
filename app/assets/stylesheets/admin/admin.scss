@@ -686,6 +686,9 @@ fieldset {
     label {color: #7B040F;}
     input, textarea, select {border: 1px solid #7B040F;}
   }
+  &.free-width {
+    select {width: auto;}
+  }
 }
 
 .submit_link {

@@ -1,5 +1,6 @@
 <footer>
   <div class="submit_link">
+    <%= content if defined?(content) && !content.nil? %>
     <%= f.submit t('admin.save'), :class => 'alt_btn' if editable %>
   </div>
 </footer>

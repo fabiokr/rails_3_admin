@@ -27,4 +27,5 @@ module ApplicationHelper
   def get_updated_at
     @seo && @seo.updated_at ? @seo.updated_at : managable_content_for(:updated_at)
   end
+
 end

@@ -61,6 +61,10 @@ module AdminHelper
     icon_link_to(:delete, resource_path(resource), :method => :delete, :confirm => t('admin.delete_resource_confirmation', :resource_name => resource.class.model_name.human))
   end
 
+  def highlight_checkbox(form)
+    (form.label(:highlight) + form.check_box(:highlight)).html_safe
+  end
+
   private
 
   def resource_errors(resource)
