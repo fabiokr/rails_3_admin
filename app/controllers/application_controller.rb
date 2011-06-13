@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   layout :layout
+
   managable_content_ignore_namespace 'admin', 'devise', 'ckeditor'
+
+  respond_to :html
 
   protected
 

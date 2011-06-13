@@ -28,4 +28,20 @@ module ApplicationHelper
     @seo && @seo.updated_at ? @seo.updated_at : managable_content_for(:updated_at)
   end
 
+  def sitemap_category_entry(category, url_path)
+    sitemap_entry send(url_path, :category_id => category.to_url_param)
+  end
+
+  def sitemap_article_entry(article, url_path)
+    sitemap_entry send(url_path, :category_id => article.category.to_url_param, :article_id => article.to_url_param)
+  end
+
+  def sitemap_entry(url)
+    content_tag(:url) do
+      content_tag(:loc) do
+        request.protocol + request.host_with_port + url
+      end
+    end
+  end
+
 end
