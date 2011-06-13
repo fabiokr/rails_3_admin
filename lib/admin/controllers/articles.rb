@@ -41,7 +41,7 @@ module Admin
           @seo.keywords =     @article.keywords
           @seo.updated_at =   @article.updated_at
 
-          add_breadcrumb @article.title, path(self.class.article_path, :category_id => @category.to_url_param, :article_id => @article.to_url_param)
+          add_breadcrumb @article.title, path(self.class.article_path, :category_id => @category.slug, :article_id => @article.slug)
         end
 
         protected
@@ -59,9 +59,9 @@ module Admin
             end
 
             add_breadcrumb managable_content_for(:title), path(self.class.categories_path)
-            add_breadcrumb @category.name, path(self.class.category_path, :category_id => @category.to_url_param)
+            add_breadcrumb @category.name, path(self.class.category_path, :category_id => @category.slug)
           else
-            redirect_to path(self.class.category_path, :category_id => self.class.category_model.sorted.first.to_url_param)
+            redirect_to path(self.class.category_path, :category_id => self.class.category_model.sorted.first.slug)
           end
         end
 

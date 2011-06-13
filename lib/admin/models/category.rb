@@ -20,10 +20,6 @@ module Admin
       end
 
       module InstanceMethods
-        def to_url_param
-          self.slug
-        end
-
         private
 
         def set_slug

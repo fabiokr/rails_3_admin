@@ -54,12 +54,6 @@ module Admin
           assert_equal "#{article.title.parameterize}", article.slug
         end
 
-        test 'should return the slug on to_url_param' do
-          article = Factory(self.class.article_factory, :published_at => DateTime.now)
-
-          assert_equal article.slug, article.to_url_param
-        end
-
         test 'should have unpublished scope' do
           articles = [Factory(self.class.article_factory, :published_at => nil), Factory(self.class.article_factory, :published_at => DateTime.now)]
 

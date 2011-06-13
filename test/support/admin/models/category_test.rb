@@ -44,10 +44,6 @@ module Admin
           assert_equal @category.name.parameterize, @category.slug
         end
 
-        test 'should return the slug on to_url_param' do
-          assert_equal @category.slug, @category.to_url_param
-        end
-
         test 'should have sorted scope' do
           Factory(self.class.category_factory)
 

@@ -28,7 +28,7 @@ module Admin
         test 'on index should redirect if category_id is empty' do
           get :index
 
-          assert redirect_to(path(@controller.category_path, :category_id => @controller.category_model.sorted.first.to_url_param))
+          assert redirect_to(path(@controller.category_path, :category_id => @controller.category_model.sorted.first.slug))
         end
 
         test 'on index should list the category published articles' do
@@ -48,7 +48,7 @@ module Admin
           get :index, :category_id => @category.slug
 
           assert @controller.send(:breadcrumbs).detect{|crumb| crumb.path == path(@controller.categories_path)}
-          assert @controller.send(:breadcrumbs).detect{|crumb| crumb.path == path(@controller.category_path, :category_id => @category.to_url_param)}
+          assert @controller.send(:breadcrumbs).detect{|crumb| crumb.path == path(@controller.category_path, :category_id => @category.slug)}
         end
 
         test 'on index should raise in case of invalid article_category' do
@@ -60,7 +60,7 @@ module Admin
         test 'on show should list published article' do
           article = @category.articles.published.first
 
-          get :show, :category_id => @category.slug, :article_id => article.to_url_param
+          get :show, :category_id => @category.slug, :article_id => article.slug
 
           assert_equal article, assigns[:article]
           assert_equal @category, assigns[:category]
@@ -70,11 +70,11 @@ module Admin
         test 'on show should set breadcrumb' do
           article = @category.articles.published.first
 
-          get :show, :category_id => @category.slug, :article_id => article.to_url_param
+          get :show, :category_id => @category.slug, :article_id => article.slug
 
           assert @controller.send(:breadcrumbs).detect{|crumb| crumb.path == path(@controller.categories_path)}
-          assert @controller.send(:breadcrumbs).detect{|crumb| crumb.path == path(@controller.category_path, :category_id => @category.to_url_param)}
-          assert @controller.send(:breadcrumbs).detect{|crumb| crumb.path == path(@controller.article_path, :category_id => article.category.to_url_param, :article_id => article.to_url_param)}
+          assert @controller.send(:breadcrumbs).detect{|crumb| crumb.path == path(@controller.category_path, :category_id => @category.slug)}
+          assert @controller.send(:breadcrumbs).detect{|crumb| crumb.path == path(@controller.article_path, :category_id => article.category.slug, :article_id => article.slug)}
         end
 
         test 'on show should raise if article is invalid' do
