@@ -68,10 +68,8 @@ module AdminHelper
   def current_path_for_menu?(path)
     @builder ||= Admin::Helpers::BreadcrumbBuilder.new(self, breadcrumbs)
     path = path.is_a?(Symbol) ? send(path) : path
-puts "Crumbs"
-puts path
+
     path == request.path || breadcrumbs.detect do |crumb|
-      puts @builder.send(:compute_path, crumb)
       @builder.send(:compute_path, crumb) == path
     end
   end
