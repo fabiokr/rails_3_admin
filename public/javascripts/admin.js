@@ -1,4 +1,23 @@
 var admin = {
+  configureSidebar: function() {
+    var nav = $('#sidebar nav');
+
+    nav.find('.toggle').click(function(){
+      var self = $(this);
+
+      if(self.attr('data-state') == 'show') {
+        self.html(self.attr('data-show')).attr('data-state', 'hide');
+        self.parent().next().slideUp('fast');
+      } else {
+        self.html(self.attr('data-hide')).attr('data-state', 'show');
+        self.parent().next().slideDown();
+      }
+      return false;
+    });
+
+    nav.find('.current').parent().prev().find('.toggle').trigger('click');
+  },
+
   configureTabs: function() {
     //When page loads...
 	  $(".tab_content").hide(); //Hide all content
@@ -97,6 +116,7 @@ var admin = {
 };
 
 $(document).ready(function() {
+  admin.configureSidebar();
   admin.configureTabs();
   admin.configureColumns();
   admin.configureWysiwyg();

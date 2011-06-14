@@ -31,15 +31,19 @@
 	</section><!-- end of secondary bar -->
 
 	<aside id="sidebar" class="column">
-		<h3><%= Admin::Page.model_name.human.pluralize %></h3>
     <nav>
       <% Rails.application.config.admin_menu.each do |menu| %>
-        <h3><%= menu.title %></h3>
-        <% menu.each do |item| %>
-          <%= content_tag 'li', :class => item.icon ? "icn_#{item.icon}" : nil do %>
-            <%= link_to item.title, item.path.is_a?(Symbol) ? self.send(item.path) : item.path %>
+        <h3>
+          <%= menu.title %>
+          <a href="#" class="toggle" data-hide="<%= t('admin.hide') %>" data-show="<%= t('admin.unhide') %>"><%= t('admin.unhide') %></a>
+        </h3>
+        <ul>
+          <% menu.each do |item| %>
+            <%= content_tag 'li', :class => "#{item.icon ? 'icn_' + item.icon : nil} #{current_path_for_menu?(item.path) ? 'current' : nil}" do %>
+              <%= link_to item.title, item.path.is_a?(Symbol) ? self.send(item.path) : item.path %>
+            <% end %>
           <% end %>
-        <% end %>
+        </ul>
       <% end %>
     </nav>
 		<footer>

@@ -22,7 +22,7 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
   end
 
   def collection_breadcrumbs
-    add_breadcrumb(resource_class.model_name.human.pluralize, Proc.new { |c| collection_url parent? ? parent : nil })
+    add_breadcrumb(resource_class.model_name.human.pluralize, Proc.new { |c| collection_path parent? ? parent : nil })
   end
 
   def resource_breadcrumbs

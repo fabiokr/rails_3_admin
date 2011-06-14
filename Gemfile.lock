@@ -166,7 +166,6 @@ DEPENDENCIES
   launchy
   minitest
   paperclip
-  pg
   rails (= 3.0.8)
   rails3-generators
   render_inheritable

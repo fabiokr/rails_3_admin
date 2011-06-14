@@ -22,8 +22,10 @@ en:
     edit_resource: "Edit %{resource_name}"
     show_resource: "%{resource_name}"
     delete_resource: "Remove %{resource_name}"
-    delete_resource: "Are you sure you want to remove this %{resource_name}?"
+    delete_resource_confirmation: "Are you sure you want to remove this %{resource_name}?"
     see_all: See all
+    hide: Hide
+    unhide: Show
     content:
       body: Main Content
     titles:
