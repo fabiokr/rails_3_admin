@@ -2,6 +2,11 @@ ActiveAdminBase::Application.routes.draw do
 
   devise_for :admin_users, :path => 'admin'
 
+  namespace :ckeditor do
+    resources :pictures, :only => [:index, :create, :destroy]
+    resources :attachment_files, :only => [:index, :create, :destroy]
+  end
+
   match 'admin' => 'admin/dashboards#show'
   namespace 'admin' do
     resource :dashboard, :only => [:show]
