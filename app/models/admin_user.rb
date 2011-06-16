@@ -5,4 +5,6 @@ class AdminUser < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  scope :sorted, lambda { |sort = nil| order(sort || 'email ASC') }
 end

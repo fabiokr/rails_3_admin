@@ -1,0 +1,23 @@
+<% editable = true if editable.nil? %>
+<article class="module width_full">
+  <%= form_for(resource) do |f| %>
+	  <header><h3><%= form_title(f.object) %></h3></header>
+		  <div class="module_content">
+			  <fieldset>
+          <%= f.label :email %>
+          <%= editable ? f.text_field(:email) : f.object.email %>
+        </fieldset>
+        <fieldset>
+          <%= f.label :password %>
+          <%= editable ? f.password_field(:password) : '' %>
+        </fieldset>
+        <fieldset>
+          <%= f.label :password_confirmation %>
+          <%= editable ? f.password_field(:password_confirmation) : '' %>
+        </fieldset>
+        <div class="clear"></div>
+		  </div>
+		  <%= render 'form_footer', :f => f, :editable => editable %>
+  <% end %>
+</article>
+

@@ -1,0 +1,33 @@
+<article class="module width_full">
+  <header>
+    <h3><%= resource_class.model_name.human.pluralize %> (<%= collection.total_count %>)</h3>
+    <%= paginate collection %>
+  </header>
+  <table class="data-table" cellspacing="0">
+  <thead>
+	  <tr>
+			  <th><%= sortable :email, resource_class.human_attribute_name(:title) %></th>
+			  <th><%= sortable :last_sign_in_ip, resource_class.human_attribute_name(:last_sign_in_ip) %></th>
+			  <th><%= sortable :last_sign_in_at, resource_class.human_attribute_name(:last_sign_in_at) %></th>
+			  <th><%= sortable :updated_at, resource_class.human_attribute_name(:updated_at) %></th>
+			  <th><%= t('admin.actions') %></th>
+	  </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |user| %>
+      <tr>
+			  <td><%= user.email %></td>
+			  <td><%= user.last_sign_in_ip %></td>
+			  <td><%= l(user.last_sign_in_at, :format => :short) if user.last_sign_in_at %></td>
+			  <td><%= l(user.updated_at, :format => :short) %></td>
+			  <td>
+          <%= icon_link_to(:edit, edit_resource_path(user)) %>
+          <%= link_to_destroy user if current_admin_user.id != user.id %>
+        </td>
+	    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  <footer><%= paginate collection %></footer>
+</article>
+

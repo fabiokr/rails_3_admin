@@ -9,6 +9,7 @@ ActiveAdminBase::Application.routes.draw do
 
   match 'admin' => 'admin/dashboards#show'
   namespace 'admin' do
+    resources :users
     resource :dashboard, :only => [:show]
     resource :demo, :only => [:show]
     resources :pages

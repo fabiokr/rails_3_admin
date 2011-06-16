@@ -24,8 +24,7 @@
     delete_resource: "Remover %{resource_name}"
     delete_resource_confirmation: "Você tem certeza que deseja remover este(a) %{resource_name}?"
     see_all: Ver todos(a)
-    hide: Esconder
-    unhide: Exibir
+    delete_current_user: "Desculpe, mas você não pode remover o seu próprio usuário."
     content:
       body: Conteúdo Principal
       side: Conteúdo Esquerda

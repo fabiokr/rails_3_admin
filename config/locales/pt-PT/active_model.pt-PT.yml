@@ -1,25 +1,36 @@
 "pt-PT":
   activerecord:
     models:
-      page: Página
+      admin:
+        page: Página
+      admin_user: Usuário
     attributes:
-      page:
+      general: &general
         title: Título
+        name: Nome
+        excerpt: Resumo
+        body: Conteúdo
         description: Descrição
-        tags: Tags
-        created_at: Criada em
-        updated_at: Atualizada em
-    formtastic:
-      titles:
-        post_details: "Post details"
-      labels:
-        pages:
-          title: "Your Title"
-          description: "Write something..."
-          edit:
-            title: "Edit title"
-      hints:
-        pages:
-          title: "Choose a good title for you post."
-          description: "Write something inspiring here."
+        keywords: Palavras Chave
+        category: Categoria
+        category_id: Categoria
+        date: Data
+        published: Publicado(a)
+        published_at: Publicado(a) em
+        scheduled_to: Agendado(a) para
+        highlight: Destaque
+        updated_at: Atualizado(a) em
+        created_at: Criado(a) em
+        url: Url
+      admin:
+        page:
+          <<: *general
+      admin_user:
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de senha
+        last_sign_in_ip: Último IP registrado
+        last_sign_in_at: Data do último login
+        updated_at: Atualizado(a) em
+        created_at: Criado(a) em
 
