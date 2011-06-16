@@ -103,6 +103,7 @@ section#secondary_bar {
   a {
     text-decoration: none;
     color: #666666;
+    line-height: 35px;
     &:hover {
       color: #77BACE; }
     &.logout_user {
@@ -110,8 +111,9 @@ section#secondary_bar {
       display: block;
       width: 16px;
       height: 35px;
-      text-indent: -5000px;
-      background: url(../../images/admin/icn_logout.png) center no-repeat; } } }
+    }
+  }
+}
 
 /* Breadcrumbs */
 
