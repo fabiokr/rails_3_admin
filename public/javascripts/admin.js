@@ -6,16 +6,14 @@ var admin = {
       var self = $(this);
 
       if(self.attr('data-state') == 'show') {
-        self.html(self.attr('data-show')).attr('data-state', 'hide');
-        self.parent().next().slideUp('fast');
+        self.attr('data-state', 'hide').next().slideUp('fast');
       } else {
-        self.html(self.attr('data-hide')).attr('data-state', 'show');
-        self.parent().next().slideDown();
+        self.attr('data-state', 'show').next().slideDown();
       }
       return false;
     });
 
-    nav.find('.current').parent().prev().find('.toggle').trigger('click');
+    nav.find('.current').parent().prev('.toggle').trigger('click');
   },
 
   configureTabs: function() {
