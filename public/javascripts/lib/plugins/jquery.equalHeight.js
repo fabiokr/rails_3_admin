@@ -14,7 +14,8 @@
 
             // set each items height to use the tallest value found
             this.each(function(){
-                $(this).height(tallest);
+                $(this).attr('min-height', tallest);
             });
         }
     })(jQuery);
+
