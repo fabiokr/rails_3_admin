@@ -14,7 +14,7 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 module ActionDispatch
   class IntegrationTest
-    include Capybara
+    include Capybara::DSL
   end
 end
 

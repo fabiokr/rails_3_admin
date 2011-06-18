@@ -10,6 +10,10 @@ module Admin
         attr_accessible :sort
 
         after_update  :set_position_on_update
+
+        scope :sorted, (lambda do |*args|
+          order('position ASC')
+        end)
       end
 
       module ClassMethods

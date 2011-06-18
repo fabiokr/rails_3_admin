@@ -78,7 +78,7 @@ module Admin
 
         test 'should be able to set published_at trought the publish_now method' do
           article = Factory(self.class.article_factory, :published_at => nil)
-          refute article.published_at
+          assert !article.published_at
 
           article.publish_now = true
           article.save!

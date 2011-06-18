@@ -10,7 +10,10 @@ module Admin
 
     validates :controller_path, :presence => true
 
-    scope :sorted, lambda { |sort = nil| order(sort.nil? ? 'title asc' : sort) }
+    scope :sorted, (lambda do |*args|
+      sort = args.first
+      order(sort.nil? ? 'title asc' : sort)
+    end)
     scope :available, lambda { where(:controller_path => valid_controllers) }
 
     class << self

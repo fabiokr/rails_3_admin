@@ -2,7 +2,7 @@ module AdminHelper
   def icon_link_to(*args)
     image         = args[0]
     options      = args[1] || {}
-    html_options = {:title => t("admin.#{image}")}.merge (args[2] || {})
+    html_options = {:title => t("admin.#{image}")}.merge(args[2] || {})
 
     image = case image
       when :delete
