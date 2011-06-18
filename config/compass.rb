@@ -22,4 +22,3 @@ http_path = "/"
 # sass-convert -R --from scss --to sass app/stylesheets scss && rm -rf sass && mv scss sass
 
 sass_dir = File.join("app", "assets", "stylesheets")
-css_dir  = File.join("tmp", "stylesheets")

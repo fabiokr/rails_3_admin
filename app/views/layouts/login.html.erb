@@ -4,8 +4,8 @@
 	<meta charset="utf-8"/>
 	<title><%= "#{t('app')} :: #{t('admin.admin')}" %></title>
   <%= csrf_meta_tag %>
-  <%= stylesheet_link_tag 'admin/admin.css' %>
-  <!--[if lt IE 9]><%= stylesheet_link_tag 'admin/admin-ie.css' %><![endif]-->
+  <%= include_stylesheets :admin %>
+  <!--[if lt IE 9]><%= include_stylesheets :adadsie %><![endif]-->
 </head>
 <body>
 	<header id="header">
@@ -19,7 +19,7 @@
     <%= yield %>
 	</section>
 
-  <%= javascript_include_tag :admin_defaults %>
+  <%= include_javascripts :admin %>
 </body>
 </html>
 

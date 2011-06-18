@@ -5,8 +5,8 @@
 	<title><%= "#{t('app')} :: #{t('admin.admin')}" %></title>
   <%= csrf_meta_tag %>
   <%= tag :meta, :name => 'locale', :content => I18n.locale %>
-  <%= stylesheet_link_tag 'admin/admin.css' %>
-  <!--[if lt IE 9]><%= stylesheet_link_tag 'admin/admin-ie.css' %><![endif]-->
+  <%= include_stylesheets :admin %>
+  <!--[if lt IE 9]><%= include_stylesheets :admin_ie %><![endif]-->
 </head>
 <body>
 	<header id="header">
@@ -45,18 +45,17 @@
         </ul>
       <% end %>
     </nav>
-		<footer>
-			<hr />
-			<p><strong>Copyright &copy; <%= Time.now.year %> <%= t('app') %></strong></p>
-			<p>Theme by <a href="http://www.medialoot.com">MediaLoot</a></p>
-		</footer>
 	</aside><!-- end of sidebar -->
 
 	<section id="main" class="column">
     <%= render 'layouts/admin/flash' %>
     <%= yield %>
 	</section>
-  <%= javascript_include_tag :admin_defaults %>
+
+	<footer>
+		<p><strong>Copyright &copy; <%= Time.now.year %> <%= t('app') %></strong></p>
+	</footer>
+  <%= include_javascripts :admin %>
 </body>
 </html>
 

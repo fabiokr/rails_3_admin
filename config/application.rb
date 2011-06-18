@@ -48,5 +48,3 @@ module ActiveAdminBase
     end
   end
 end
-
-Sass::Plugin.options[:template_location] = { 'app/stylesheets' => 'tmp/stylesheets' }

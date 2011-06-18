@@ -14,6 +14,8 @@ gem 'kaminari'
 gem 'acts_as_list'
 gem 'ckeditor'
 gem 'paperclip'
+gem 'jammit'
+gem 'breadcrumbs_on_rails'
 
 #views
 gem 'jquery-rails'
