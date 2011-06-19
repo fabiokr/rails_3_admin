@@ -12,6 +12,5 @@ javascripts:
     - 'public/javascripts/lib/jquery-ui.js'
     - 'public/javascripts/lib/jquery_ujs.js'
     - 'public/javascripts/lib/plugins/jquery.equalHeight.js'
-    - 'public/javascripts/ckeditor/ckeditor.js'
     - 'public/javascripts/admin.js'
 
