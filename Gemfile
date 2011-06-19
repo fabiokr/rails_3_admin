@@ -8,7 +8,6 @@ gem 'inherited_resources'
 gem 'render_inheritable'
 gem 'responders'
 gem 'has_scope'
-gem 'compass', ">= 0.11.1"
 gem 'breadcrumbs_on_rails'
 gem 'kaminari'
 gem 'acts_as_list'
@@ -23,9 +22,10 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'sqlite3'
   gem 'rails3-generators'
+  gem 'compass', '>= 0.11.1'
 
   gem 'minitest'
-  gem "simplecov", '>= 0.4.0', :require => false
+  gem 'simplecov', '>= 0.4.0', :require => false
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl'
