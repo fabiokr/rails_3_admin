@@ -92,9 +92,7 @@ module Admin
       #should generate global content for header as defined on managable_layout_content_for
       @page = @pages[0]
       assert_equal ApplicationController.controller_path, @page.controller_path
-
-      assert_equal 1, @page.page_contents.size
-      assert_equal 'header', @page.page_contents[0].key
+      assert_equal 'header', @page.page_contents.last.key
 
       @page = @pages[1]
       assert_equal HomeMocksController.controller_path, @page.controller_path
