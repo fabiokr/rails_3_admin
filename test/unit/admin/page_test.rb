@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ApplicationController
   managable_content_ignore_namespace 'ignored'
+  managable_layout_content_for :header
 end
 
 class HomeMocksController < ApplicationController
@@ -86,23 +87,30 @@ module Admin
 
     def check_generated_pages
       @pages = Page.all
-      assert_equal 3, @pages.size
+      assert_equal 4, @pages.size
 
+      #should generate global content for header as defined on managable_layout_content_for
       @page = @pages[0]
+      assert_equal ApplicationController.controller_path, @page.controller_path
+
+      assert_equal 1, @page.page_contents.size
+      assert_equal 'header', @page.page_contents[0].key
+
+      @page = @pages[1]
       assert_equal HomeMocksController.controller_path, @page.controller_path
 
       assert_equal 2, @page.page_contents.size
       assert_equal 'body', @page.page_contents[0].key
       assert_equal 'side', @page.page_contents[1].key
 
-      @page = @pages[1]
+      @page = @pages[2]
       assert_equal OtherMocksController.controller_path, @page.controller_path
 
       assert_equal 2, @page.page_contents.size
       assert_equal 'body', @page.page_contents[0].key
       assert_equal 'footer', @page.page_contents[1].key
 
-      @page = @pages[2]
+      @page = @pages[3]
       assert_equal HomeNoContentMocksController.controller_path, @page.controller_path
 
       assert @page.page_contents.empty?

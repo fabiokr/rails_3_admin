@@ -35,14 +35,14 @@ module Admin
       # configured ApplicationController.managable_content_ignore_namespace
       # and also the ActiveAdmin.config.default_namespace.
       def generate!
-        controllers = Rails.application.routes.routes.map do |route|
+        controllers = (Rails.application.routes.routes.map do |route|
           controller_name = "#{route.requirements[:controller].camelize}Controller"
           ActiveSupport::Dependencies.ref(controller_name).get
-        end
+        end).insert(0, ApplicationController).uniq
 
         valid_controllers = valid_controllers()
 
-        controllers.uniq.each do |controller|
+        controllers.each do |controller|
           controller_path = controller.controller_path
           if controller.respond_to?(:managable_content_for) && valid_controllers.include?(controller_path)
             Page.transaction do
@@ -54,7 +54,8 @@ module Admin
               end
 
               # Create PageContent if it does not exist yet
-              controller.managable_content_for.each do |key|
+              contents = (controller == ApplicationController) ? controller.managable_layout_content_for : controller.managable_content_for
+              contents.each do |key|
                 if page.page_contents.where(:key => key).first.nil?
                   page_content = page.page_contents.build
                   page_content.key = key
@@ -67,25 +68,20 @@ module Admin
       end
 
       def valid_controllers
-        valid_controllers = []
-        if valid_controllers.empty?
-          controller_paths = Rails.application.routes.routes.map do |route|
-            controller_path = route.requirements[:controller]
-          end
-
-          ignored_namespaces = ApplicationController.managable_content_ignore_namespace
-          ignored_namespaces << 'rails'
-
-          valid_controllers = controller_paths.uniq.select do |controller_path|
-            !controller_path.empty? && !ignored_namespaces.detect do |ignored|
-              controller_path.start_with?(ignored)
-            end
-          end
-
-          valid_controllers.uniq!
+        controller_paths = Rails.application.routes.routes.map do |route|
+          controller_path = route.requirements[:controller]
         end
 
-        valid_controllers
+        ignored_namespaces = ApplicationController.managable_content_ignore_namespace
+        ignored_namespaces << 'rails'
+
+        valid_controllers = controller_paths.uniq.select do |controller_path|
+          !controller_path.empty? && !ignored_namespaces.detect do |ignored|
+            controller_path.start_with?(ignored)
+          end
+        end
+
+        valid_controllers.insert(0, ApplicationController.controller_path).uniq
       end
     end
 

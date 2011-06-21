@@ -1,27 +1,32 @@
 module ApplicationHelper
+
+  def clear_array(array)
+    array.compact.reject(&:blank?)
+  end
+
   def get_title
-    title = ['MD Trading', managable_content_for(:title)]
+    title = [managable_layout_content_for(:title), managable_content_for(:title)]
     title << content_for(:title) if content_for?(:title)
     title << @seo.title unless @seo.nil?
     title_join title
   end
 
   def title_join(values)
-    values.compact.join(' : ')
+    clear_array(values).join(' : ')
   end
 
   def get_description
-    description = [managable_content_for(:description)]
+    description = [managable_layout_content_for(:description), managable_content_for(:description)]
     description << content_for(:description) if content_for?(:description)
     description << @seo.description unless @seo.nil?
-    description.join('; ')
+    clear_array(description).join('; ')
   end
 
   def get_keywords
-    keywords = [managable_content_for(:keywords)]
+    keywords = [managable_layout_content_for(:keywords), managable_content_for(:keywords)]
     keywords << content_for(:keywords) if content_for?(:keywords)
     keywords << @seo.keywords unless @seo.nil?
-    keywords.join(', ')
+    clear_array(keywords).join(', ')
   end
 
   def get_updated_at

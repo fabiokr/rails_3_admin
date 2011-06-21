@@ -4,13 +4,19 @@ class Admin::HasContentMock < ApplicationController
   include Admin::Controllers::HasContent
 
   managable_content_ignore_namespace 'another'
+  managable_layout_content_for :header
   managable_content_for :body, :side
 end
 
 class Admin::HasContentTest < ActiveSupport::TestCase
 
   def setup
+    @application_controller = ApplicationController.new
     @controller = Admin::HasContentMock.new
+
+    @application_page = Factory(:page, :controller_path => @application_controller.controller_path)
+    @content_header = Factory(:page_content, :page => @application_page, :key => 'header')
+    @application_page.reload
 
     @page = Factory(:page, :controller_path => @controller.controller_path)
     @content_body = Factory(:page_content, :page => @page, :key => 'body')
@@ -24,6 +30,10 @@ class Admin::HasContentTest < ActiveSupport::TestCase
 
   test 'should configure ignored namespace' do
     assert Admin::HasContentMock.managable_content_ignore_namespace.include?('another')
+  end
+
+  test 'should configure managable layout content for' do
+    assert Admin::HasContentMock.managable_layout_content_for.include?(:header)
   end
 
   test 'should retrieve correct page content with helper' do
@@ -41,6 +51,8 @@ class Admin::HasContentTest < ActiveSupport::TestCase
   test 'should retrieve correct content with helper' do
     assert_equal @content_body.content, @controller.managable_content_for(:body)
     assert_equal @content_side.content, @controller.managable_content_for(:side)
+
+    assert_equal @content_header.content, @controller.managable_layout_content_for(:header)
   end
 
   test 'should retrieve nil for invalid content' do
