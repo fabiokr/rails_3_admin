@@ -25,7 +25,9 @@
     delete_resource_confirmation: "Você tem certeza que deseja remover este(a) %{resource_name}?"
     see_all: Ver todos(a)
     delete_current_user: "Desculpe, mas você não pode remover o seu próprio usuário."
-    general_page: Página Geral
+    pages:
+      general: Página Geral
+      panel: Últimas páginas alteradas
     content:
       body: Conteúdo Principal
       side: Conteúdo Esquerda

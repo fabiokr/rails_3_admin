@@ -25,7 +25,9 @@ en:
     delete_resource_confirmation: "Are you sure you want to remove this %{resource_name}?"
     see_all: See all
     delete_current_user: "Sorry, but you cannot delete yourself."
-    general_page: General Page
+    pages:
+      general: General Page
+      panel: Latest changed pages
     content:
       body: Main Content
     titles:

@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20110529195652) do
     t.string   "controller_path"
     t.string   "title"
     t.string   "description"
-    t.string   "tags"
+    t.string   "keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

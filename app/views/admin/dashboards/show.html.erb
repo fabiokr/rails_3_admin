@@ -1,2 +1,7 @@
-Dashboard
+<% @panels.each_with_index do |panel, i| %>
+  <article class="module width_half">
+  <%= render_cell panel, 'display' %>
+  </article>
+  <%= content_tag('div', '', :class => 'clear') if i % 2 != 0 %>
+<% end %>
 

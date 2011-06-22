@@ -15,6 +15,7 @@ gem 'ckeditor'
 gem 'paperclip'
 gem 'jammit'
 gem 'breadcrumbs_on_rails'
+gem 'cells'
 
 #views
 gem 'jquery-rails'
