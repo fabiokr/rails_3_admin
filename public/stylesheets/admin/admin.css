@@ -364,24 +364,24 @@ html.js #sidebar ul {
   display: none;
 }
 
-/* line 238, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 254, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar .toggleLink:hover {
   color: #77BACE;
   text-decoration: none;
 }
-/* line 241, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 257, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar ul {
   clear: both;
   margin: 0;
   padding: 0;
 }
-/* line 245, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 261, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar li {
   list-style: none;
   margin: 0 0 0 12%;
   padding: 0;
 }
-/* line 249, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 238, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar li a {
   color: #666666;
   padding-left: 25px;
@@ -392,90 +392,124 @@ html.js #sidebar ul {
   text-shadow: 0 1px 0 #fff;
   margin: 2px 0;
 }
-/* line 258, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 247, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar li a:hover {
   color: #444444;
 }
-/* line 260, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_new_article a {
-  background: url(../../images/admin/icn_new_article.png) no-repeat center left;
-}
-/* line 262, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_edit_article a {
-  background: url(../../images/admin/icn_edit_article.png) no-repeat center left;
-}
-/* line 264, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_categories a {
-  background: url(../../images/admin/icn_categories.png) no-repeat center left;
-}
-/* line 266, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_tags a {
-  background: url(../../images/admin/icn_tags.png) no-repeat center left;
-}
-/* line 268, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_add_user a {
-  background: url(../../images/admin/icn_add_user.png) no-repeat center left;
-}
-/* line 270, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_view_users a {
-  background: url(../../images/admin/icn_view_users.png) no-repeat center left;
-}
-/* line 272, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_profile a {
-  background: url(../../images/admin/icn_profile.png) no-repeat center left;
-}
-/* line 274, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_folder a {
-  background: url(../../images/admin/icn_folder.png) no-repeat center left;
-}
-/* line 276, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_photo a {
-  background: url(../../images/admin/icn_photo.png) no-repeat center left;
-}
-/* line 278, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_audio a {
-  background: url(../../images/admin/icn_audio.png) no-repeat center left;
-}
-/* line 280, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_video a {
-  background: url(../../images/admin/icn_video.png) no-repeat center left;
-}
-/* line 282, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_settings a {
-  background: url(../../images/admin/icn_settings.png) no-repeat center left;
-}
-/* line 284, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_security a {
-  background: url(../../images/admin/icn_security.png) no-repeat center left;
-}
-/* line 286, ../../../app/assets/stylesheets/admin/admin.scss */
-#sidebar li.icn_jump_back a {
-  background: url(../../images/admin/icn_jump_back.png) no-repeat center left;
-}
-/* line 288, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 267, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar p {
   color: #666666;
   padding-left: 6%;
   text-shadow: 0 1px 0 #fff;
   margin: 10px 0 0 0;
 }
-/* line 293, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 272, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar a {
   color: #666666;
   text-decoration: none;
 }
-/* line 296, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 275, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar a:hover {
   text-decoration: underline;
 }
-/* line 298, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 277, ../../../app/assets/stylesheets/admin/admin.scss */
 #sidebar footer {
   margin-top: 20%;
 }
 
-/* Sidebar Icons */
+/* line 281, ../../../app/assets/stylesheets/admin/admin.scss */
+.actions span {
+  padding: 1%;
+}
+/* line 238, ../../../app/assets/stylesheets/admin/admin.scss */
+.actions span a {
+  color: #666666;
+  padding-left: 25px;
+  text-decoration: none;
+  display: inline-block;
+  height: 17px;
+  line-height: 17px;
+  text-shadow: 0 1px 0 #fff;
+  margin: 2px 0;
+}
+/* line 247, ../../../app/assets/stylesheets/admin/admin.scss */
+.actions span a:hover {
+  color: #444444;
+}
+
+/* Icons */
+/* line 288, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_new_article a {
+  background: url(../../images/admin/icn_new_article.png) no-repeat center left;
+}
+
+/* line 290, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_edit_article a {
+  background: url(../../images/admin/icn_edit_article.png) no-repeat center left;
+}
+
+/* line 292, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_categories a {
+  background: url(../../images/admin/icn_categories.png) no-repeat center left;
+}
+
+/* line 294, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_tags a {
+  background: url(../../images/admin/icn_tags.png) no-repeat center left;
+}
+
+/* line 296, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_add_user a {
+  background: url(../../images/admin/icn_add_user.png) no-repeat center left;
+}
+
+/* line 298, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_view_users a {
+  background: url(../../images/admin/icn_view_users.png) no-repeat center left;
+}
+
+/* line 300, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_profile a {
+  background: url(../../images/admin/icn_profile.png) no-repeat center left;
+}
+
+/* line 302, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_folder a {
+  background: url(../../images/admin/icn_folder.png) no-repeat center left;
+}
+
+/* line 304, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_photo a {
+  background: url(../../images/admin/icn_photo.png) no-repeat center left;
+}
+
+/* line 306, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_audio a {
+  background: url(../../images/admin/icn_audio.png) no-repeat center left;
+}
+
+/* line 308, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_video a {
+  background: url(../../images/admin/icn_video.png) no-repeat center left;
+}
+
+/* line 310, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_settings a {
+  background: url(../../images/admin/icn_settings.png) no-repeat center left;
+}
+
+/* line 312, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_security a {
+  background: url(../../images/admin/icn_security.png) no-repeat center left;
+}
+
+/* line 314, ../../../app/assets/stylesheets/admin/admin.scss */
+.icn_jump_back a {
+  background: url(../../images/admin/icn_jump_back.png) no-repeat center left;
+}
+
 /* Main Content */
-/* line 305, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 319, ../../../app/assets/stylesheets/admin/admin.scss */
 section#main {
   width: 77%;
   min-height: 500px;
@@ -484,7 +518,7 @@ section#main {
   margin-top: -2px;
 }
 
-/* line 312, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 326, ../../../app/assets/stylesheets/admin/admin.scss */
 #main h3 {
   color: #1F1F20;
   text-transform: uppercase;
@@ -494,19 +528,19 @@ section#main {
 }
 
 /* Login Content */
-/* line 320, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 334, ../../../app/assets/stylesheets/admin/admin.scss */
 section#main.login {
   width: 100%;
   background: none;
   float: none;
 }
-/* line 324, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 338, ../../../app/assets/stylesheets/admin/admin.scss */
 section#main.login .module {
   position: absolute;
   left: 50%;
   margin-left: -12%;
 }
-/* line 328, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 342, ../../../app/assets/stylesheets/admin/admin.scss */
 section#main.login .module .module_content {
   border: 1px solid #CCC;
   -moz-border-radius: 5px;
@@ -517,7 +551,7 @@ section#main.login .module .module_content {
   border-radius: 5px;
   background: #F6F6F6;
 }
-/* line 332, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 346, ../../../app/assets/stylesheets/admin/admin.scss */
 section#main.login .module .module_content fieldset {
   margin: 0;
   border: 0;
@@ -529,13 +563,13 @@ section#main.login .module .module_content fieldset {
   border-radius: 0;
   background: none;
 }
-/* line 337, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 351, ../../../app/assets/stylesheets/admin/admin.scss */
 section#main.login .module .module_content fieldset input[type=email], section#main.login .module .module_content fieldset input[type=password] {
   width: 90%;
 }
 
 /* Modules */
-/* line 347, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 361, ../../../app/assets/stylesheets/admin/admin.scss */
 .module {
   border: 1px solid #9BA0AF;
   width: 100%;
@@ -550,13 +584,13 @@ section#main.login .module .module_content fieldset input[type=email], section#m
   background: #ffffff;
 }
 
-/* line 356, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 370, ../../../app/assets/stylesheets/admin/admin.scss */
 #main .module header h3 {
   display: block;
   float: left;
 }
 
-/* line 363, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 377, ../../../app/assets/stylesheets/admin/admin.scss */
 .module header {
   height: 38px;
   width: 100%;
@@ -574,7 +608,7 @@ section#main.login .module .module_content fieldset input[type=email], section#m
   -khtml-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
 }
-/* line 369, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 383, ../../../app/assets/stylesheets/admin/admin.scss */
 .module footer {
   height: 32px;
   width: 100%;
@@ -594,33 +628,33 @@ section#main.login .module .module_content fieldset input[type=email], section#m
   border-bottom-right-radius: 5px;
 }
 
-/* line 377, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 391, ../../../app/assets/stylesheets/admin/admin.scss */
 .module_content {
   margin: 10px 20px;
   color: #666;
 }
 
 /* Module Widths */
-/* line 383, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 397, ../../../app/assets/stylesheets/admin/admin.scss */
 .width_full {
   width: 95%;
 }
 
-/* line 386, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 400, ../../../app/assets/stylesheets/admin/admin.scss */
 .width_half {
   width: 46%;
   margin-right: 0;
   float: left;
 }
 
-/* line 391, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 405, ../../../app/assets/stylesheets/admin/admin.scss */
 .width_quarter {
   width: 26%;
   margin-right: 0;
   float: left;
 }
 
-/* line 396, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 410, ../../../app/assets/stylesheets/admin/admin.scss */
 .width_3_quarter {
   width: 66%;
   margin-right: 0;
@@ -628,13 +662,13 @@ section#main.login .module .module_content fieldset input[type=email], section#m
 }
 
 /* Stats Module */
-/* line 403, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 417, ../../../app/assets/stylesheets/admin/admin.scss */
 .stats_graph {
   width: 64%;
   float: left;
 }
 
-/* line 407, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 421, ../../../app/assets/stylesheets/admin/admin.scss */
 .stats_overview {
   background: #F6F6F6;
   border: 1px solid #ccc;
@@ -648,13 +682,13 @@ section#main.login .module .module_content fieldset input[type=email], section#m
   border-radius: 5px;
 }
 
-/* line 414, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 428, ../../../app/assets/stylesheets/admin/admin.scss */
 .overview_today, .overview_previous {
   width: 50%;
   float: left;
 }
 
-/* line 418, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 432, ../../../app/assets/stylesheets/admin/admin.scss */
 .stats_overview p {
   margin: 0;
   padding: 0;
@@ -662,19 +696,19 @@ section#main.login .module .module_content fieldset input[type=email], section#m
   text-transform: uppercase;
   text-shadow: 0 1px 0 #fff;
 }
-/* line 424, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 438, ../../../app/assets/stylesheets/admin/admin.scss */
 .stats_overview p.overview_day {
   font-size: 12px;
   font-weight: bold;
   margin: 6px 0;
 }
-/* line 428, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 442, ../../../app/assets/stylesheets/admin/admin.scss */
 .stats_overview p.overview_count {
   font-size: 26px;
   font-weight: bold;
   color: #333333;
 }
-/* line 432, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 446, ../../../app/assets/stylesheets/admin/admin.scss */
 .stats_overview p.overview_type {
   font-size: 10px;
   color: #999999;
@@ -682,53 +716,53 @@ section#main.login .module .module_content fieldset input[type=email], section#m
 }
 
 /* Content Manager */
-/* line 439, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 453, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table {
   width: 100%;
   margin: -5px 0 0 0;
 }
-/* line 442, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 456, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table td {
   margin: 0;
   padding: 0;
   border-bottom: 1px dotted #ccc;
 }
-/* line 446, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 460, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table thead tr {
   height: 34px;
   background: url(../../images/admin/table_sorter_header.png) repeat-x;
   text-align: left;
   text-indent: 10px;
 }
-/* line 451, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 465, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table thead tr a {
   color: #1F1F20;
   padding-right: 20px;
   background: url(../../images/admin/sort_undefined.png) no-repeat center right;
 }
-/* line 455, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 469, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table thead tr a.sort_asc {
   background: url(../../images/admin/sort_asc.png) no-repeat center right;
 }
-/* line 458, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 472, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table thead tr a.sort_desc {
   background: url(../../images/admin/sort_desc.png) no-repeat center right;
 }
-/* line 463, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 477, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table td {
   padding: 15px 10px;
 }
-/* line 465, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 479, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table input[type=image] {
   margin-right: 10px;
 }
-/* line 467, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 481, ../../../app/assets/stylesheets/admin/admin.scss */
 .data-table span.handle {
   padding-left: 20px;
   background: url(../../images/admin/sort_undefined.png) no-repeat left center;
 }
 
-/* line 473, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 487, ../../../app/assets/stylesheets/admin/admin.scss */
 ul.tabs {
   margin: 3px 10px 0 0;
   padding: 0;
@@ -749,14 +783,14 @@ ul.tabs {
   font-weight: bold;
   text-shadow: 0 1px 0 #fff;
 }
-/* line 487, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 501, ../../../app/assets/stylesheets/admin/admin.scss */
 ul.tabs li {
   float: left;
   margin: 0;
   padding: 0;
   line-height: 24px;
 }
-/* line 492, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 506, ../../../app/assets/stylesheets/admin/admin.scss */
 ul.tabs li a {
   text-decoration: none;
   color: #999;
@@ -764,30 +798,30 @@ ul.tabs li a {
   padding: 0 10px;
   height: 24px;
 }
-/* line 498, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 512, ../../../app/assets/stylesheets/admin/admin.scss */
 ul.tabs li a:hover {
   color: #44474F;
 }
 
-/* line 502, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 516, ../../../app/assets/stylesheets/admin/admin.scss */
 html ul.tabs li.active {
   background: #F1F2F4;
   -webkit-box-shadow: inset 0 2px 3px #818181;
   -moz-box-shadow: inset 0 2px 3px #818181;
   box-shadow: inset 0 2px 3px #818181;
 }
-/* line 503, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 517, ../../../app/assets/stylesheets/admin/admin.scss */
 html ul.tabs li.active a {
   color: #44474F;
 }
-/* line 505, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 519, ../../../app/assets/stylesheets/admin/admin.scss */
 html ul.tabs li.active a:hover {
   background: #F1F2F4;
   -webkit-box-shadow: inset 0 2px 3px #818181;
   -moz-box-shadow: inset 0 2px 3px #818181;
   box-shadow: inset 0 2px 3px #818181;
 }
-/* line 514, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 528, ../../../app/assets/stylesheets/admin/admin.scss */
 html ul.tabs li:first-child {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -802,7 +836,7 @@ html ul.tabs li:first-child {
   -khtml-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-/* line 517, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 531, ../../../app/assets/stylesheets/admin/admin.scss */
 html ul.tabs li:first-child a {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -817,7 +851,7 @@ html ul.tabs li:first-child a {
   -khtml-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/* line 520, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 534, ../../../app/assets/stylesheets/admin/admin.scss */
 html ul.tabs li:last-child {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
@@ -832,7 +866,7 @@ html ul.tabs li:last-child {
   -khtml-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/* line 523, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 537, ../../../app/assets/stylesheets/admin/admin.scss */
 html ul.tabs li:last-child a {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
@@ -848,7 +882,7 @@ html ul.tabs li:last-child a {
   border-bottom-right-radius: 5px;
 }
 
-/* line 527, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 541, ../../../app/assets/stylesheets/admin/admin.scss */
 #main .module header h3.tabs_involved {
   display: block;
   width: 60%;
@@ -856,19 +890,19 @@ html ul.tabs li:last-child a {
 }
 
 /* Footer */
-/* line 533, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 547, ../../../app/assets/stylesheets/admin/admin.scss */
 footer.copyright {
   text-align: center;
   color: #666;
 }
 
 /* Messages */
-/* line 540, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 554, ../../../app/assets/stylesheets/admin/admin.scss */
 .message {
   border-bottom: 1px dotted #cccccc;
 }
 
-/* line 543, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 557, ../../../app/assets/stylesheets/admin/admin.scss */
 input[type=submit], a.button {
   background: #d0d1d4 url(../../images/admin/btn_submit.png) repeat-x;
   border: 1px solid #A8A9A8;
@@ -888,11 +922,11 @@ input[type=submit], a.button {
   text-shadow: 0 1px 0 #fff;
   cursor: pointer;
 }
-/* line 556, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 570, ../../../app/assets/stylesheets/admin/admin.scss */
 input[type=submit]:hover, a.button:hover {
   color: #333333;
 }
-/* line 558, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 572, ../../../app/assets/stylesheets/admin/admin.scss */
 input[type=submit].alt_btn, a.button.alt_btn {
   background: #d0d1d4 url(../../images/admin/btn_submit_2.png) repeat-x;
   border: 1px solid#30B0C8;
@@ -912,11 +946,11 @@ input[type=submit].alt_btn, a.button.alt_btn {
   text-shadow: 0 1px 0 #6CDCF9;
   cursor: pointer;
 }
-/* line 571, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 585, ../../../app/assets/stylesheets/admin/admin.scss */
 input[type=submit].alt_btn:hover, a.button.alt_btn:hover {
   color: #001217;
 }
-/* line 573, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 587, ../../../app/assets/stylesheets/admin/admin.scss */
 input[type=submit].btn_post_message, a.button.btn_post_message {
   background: #d0d1d4 url(../../images/admin/post_message.png) no-repeat;
   display: block;
@@ -926,17 +960,17 @@ input[type=submit].btn_post_message, a.button.btn_post_message {
   cursor: pointer;
   text-indent: -5000px;
 }
-/* line 581, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 595, ../../../app/assets/stylesheets/admin/admin.scss */
 input[type=submit].btn_post_message:hover, a.button.btn_post_message:hover {
   background-position: 0 -24px;
 }
 
-/* line 584, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 598, ../../../app/assets/stylesheets/admin/admin.scss */
 .post_message {
   text-align: left;
   padding: 5px 0;
 }
-/* line 588, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 602, ../../../app/assets/stylesheets/admin/admin.scss */
 .post_message input[type=text] {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -956,7 +990,7 @@ input[type=submit].btn_post_message:hover, a.button.btn_post_message:hover {
   float: left;
   margin: 0 3.5%;
 }
-/* line 601, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 615, ../../../app/assets/stylesheets/admin/admin.scss */
 .post_message input[type=text]:focus {
   outline: none;
   border: 1px solid #77BACE;
@@ -965,12 +999,12 @@ input[type=submit].btn_post_message:hover, a.button.btn_post_message:hover {
   box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
   color: #666666;
 }
-/* line 608, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 622, ../../../app/assets/stylesheets/admin/admin.scss */
 .post_message input[type=image] {
   float: left;
 }
 
-/* line 611, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 625, ../../../app/assets/stylesheets/admin/admin.scss */
 .message_list {
   height: 250px;
   overflow-x: hidden;
@@ -978,7 +1012,7 @@ input[type=submit].btn_post_message:hover, a.button.btn_post_message:hover {
 }
 
 /* New/Edit Article Module */
-/* line 618, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 632, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -991,11 +1025,11 @@ fieldset {
   padding: 1% 0%;
   margin: 10px 0;
 }
-/* line 624, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 638, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset div.content {
   padding: 1% 1%;
 }
-/* line 627, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 641, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset label {
   display: block;
   float: left;
@@ -1008,7 +1042,7 @@ fieldset label {
   margin: -5px 0 5px 0;
   text-transform: uppercase;
 }
-/* line 638, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 652, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset input[type=text], fieldset input[type=email], fieldset input[type=password] {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1031,7 +1065,7 @@ fieldset input[type=text], fieldset input[type=email], fieldset input[type=passw
   width: 96%;
   margin: 0 10px;
 }
-/* line 651, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 665, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset input[type=text]:focus, fieldset input[type=email]:focus, fieldset input[type=password]:focus {
   outline: none;
   border: 1px solid #77BACE;
@@ -1040,7 +1074,7 @@ fieldset input[type=text]:focus, fieldset input[type=email]:focus, fieldset inpu
   -o-box-shadow: inset 0 2px 2px #cccccc, 0 0 10px #addce6;
   box-shadow: inset 0 2px 2px #cccccc, 0 0 10px #addce6;
 }
-/* line 655, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 669, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset select {
   width: 96%;
   margin: 0 10px;
@@ -1048,7 +1082,7 @@ fieldset select {
   height: 20px;
   color: #666666;
 }
-/* line 661, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 675, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset textarea {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -1070,7 +1104,7 @@ fieldset textarea {
   width: 96%;
   margin: 0 10px;
 }
-/* line 673, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 687, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset textarea:focus {
   outline: none;
   border: 1px solid #77BACE;
@@ -1079,7 +1113,7 @@ fieldset textarea:focus {
   -o-box-shadow: inset 0 2px 2px #cccccc, 0 0 10px #addce6;
   box-shadow: inset 0 2px 2px #cccccc, 0 0 10px #addce6;
 }
-/* line 678, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 692, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset iframe {
   padding-left: 10px;
   margin: 0 0.5%;
@@ -1087,7 +1121,7 @@ fieldset iframe {
   float: left;
   margin: 0 10px;
 }
-/* line 685, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 699, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset .cke_skin_kama {
   display: block;
   float: left;
@@ -1096,26 +1130,26 @@ fieldset .cke_skin_kama {
   margin: 0 10px !important;
   padding-left: 10px !important;
 }
-/* line 694, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 708, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset .field_with_errors label {
   color: #7B040F;
 }
-/* line 695, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 709, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset .field_with_errors input, fieldset .field_with_errors textarea, fieldset .field_with_errors select {
   border: 1px solid #7B040F;
 }
-/* line 698, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 712, ../../../app/assets/stylesheets/admin/admin.scss */
 fieldset.free-width select {
   width: auto;
 }
 
-/* line 702, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 716, ../../../app/assets/stylesheets/admin/admin.scss */
 .submit_link {
   float: right;
   margin-right: 3%;
   padding: 5px 0;
 }
-/* line 706, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 720, ../../../app/assets/stylesheets/admin/admin.scss */
 .submit_link select {
   width: 150px;
   border: 1px solid #bbb;
@@ -1123,7 +1157,7 @@ fieldset.free-width select {
   color: #666666;
 }
 
-/* line 714, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 728, ../../../app/assets/stylesheets/admin/admin.scss */
 #main .module_content h1 {
   color: #333333;
   text-transform: none;
@@ -1131,7 +1165,7 @@ fieldset.free-width select {
   font-size: 22px;
   margin: 8px 0px;
 }
-/* line 720, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 734, ../../../app/assets/stylesheets/admin/admin.scss */
 #main .module_content h2 {
   color: #444444;
   text-transform: none;
@@ -1139,7 +1173,7 @@ fieldset.free-width select {
   font-size: 18px;
   margin: 8px 0px;
 }
-/* line 726, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 740, ../../../app/assets/stylesheets/admin/admin.scss */
 #main .module_content h3 {
   color: #666666;
   text-transform: uppercase;
@@ -1147,7 +1181,7 @@ fieldset.free-width select {
   font-size: 13px;
   margin: 8px 0px;
 }
-/* line 732, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 746, ../../../app/assets/stylesheets/admin/admin.scss */
 #main .module_content h4 {
   color: #666666;
   text-transform: none;
@@ -1155,11 +1189,11 @@ fieldset.free-width select {
   font-size: 13px;
   margin: 8px 0px;
 }
-/* line 738, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 752, ../../../app/assets/stylesheets/admin/admin.scss */
 #main .module_content li {
   line-height: 150%;
 }
-/* line 741, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 755, ../../../app/assets/stylesheets/admin/admin.scss */
 #main h4.alert_info, #main h4.alert_notice, #main h4.alert_warning, #main h4.alert_alert, #main h4.alert_error, #main h4.alert_success {
   display: block;
   width: 95%;
@@ -1175,28 +1209,28 @@ fieldset.free-width select {
   text-indent: 40px;
   font-size: 14px;
 }
-/* line 750, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 764, ../../../app/assets/stylesheets/admin/admin.scss */
 #main h4.alert_info, #main h4.alert_notice {
   background: #b5e5ef url(../../images/admin/icn_alert_info.png) no-repeat;
   background-position: 10px 10px;
   border: 1px solid #77BACE;
   color: #082B33;
 }
-/* line 755, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 769, ../../../app/assets/stylesheets/admin/admin.scss */
 #main h4.alert_warning, #main h4.alert_alert {
   background: #f5f3ba url(../../images/admin/icn_alert_warning.png) no-repeat;
   background-position: 10px 10px;
   border: 1px solid #C7A20D;
   color: #796616;
 }
-/* line 760, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 774, ../../../app/assets/stylesheets/admin/admin.scss */
 #main h4.alert_error {
   background: #f3d9d9 url(../../images/admin/icn_alert_error.png) no-repeat;
   background-position: 10px 10px;
   border: 1px solid #D20009;
   color: #7B040F;
 }
-/* line 765, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 779, ../../../app/assets/stylesheets/admin/admin.scss */
 #main h4.alert_success {
   background: #e2f6c5 url(../../images/admin/icn_alert_success.png) no-repeat;
   background-position: 10px 10px;
@@ -1205,21 +1239,21 @@ fieldset.free-width select {
 }
 
 /* Alerts */
-/* line 773, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 787, ../../../app/assets/stylesheets/admin/admin.scss */
 nav.pagination {
   margin: 8px 20px;
   float: right;
 }
-/* line 776, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 790, ../../../app/assets/stylesheets/admin/admin.scss */
 nav.pagination span {
   padding: 2px 5px;
 }
-/* line 778, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 792, ../../../app/assets/stylesheets/admin/admin.scss */
 nav.pagination span a {
   color: #666;
 }
 
-/* line 784, ../../../app/assets/stylesheets/admin/admin.scss */
+/* line 798, ../../../app/assets/stylesheets/admin/admin.scss */
 .handle:hover {
   cursor: move;
 }
