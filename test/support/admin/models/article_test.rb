@@ -70,6 +70,12 @@ module Admin
           assert self.class.article_model.sorted.all
         end
 
+        test 'should have highlighted scope' do
+          articles = [Factory(self.class.article_factory, :highlight => false), Factory(self.class.article_factory, :highlight => true)]
+
+          assert_equal [articles[1]], self.class.article_model.highlighted.all
+        end
+
         test 'should have for_url_param scope' do
           article = Factory(self.class.article_factory, :published_at => DateTime.now)
 

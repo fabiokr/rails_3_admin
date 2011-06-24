@@ -14,6 +14,7 @@ module Admin
 
         scope :unpublished, where(:published_at => nil)
         scope :published, lambda { where(arel_table[:published_at].not_eq(nil)) }
+        scope :highlighted, lambda { where(:highlight => true) }
         scope :sorted, (lambda do |*args|
           sort = args.first
           order(sort ? sort : 'highlight DESC, published_at DESC')
