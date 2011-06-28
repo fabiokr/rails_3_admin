@@ -4,8 +4,8 @@ module Admin
       extend ActiveSupport::Concern
 
       included do
-        class_attribute :_contents
-        self._contents = []
+        class_attribute :content_for
+        self.content_for = []
 
         mattr_accessor :contents_ignore_namespace, :layout_content_for
 
@@ -14,8 +14,9 @@ module Admin
 
       module ClassMethods
         def managable_content_for(*args)
-          self._contents = args unless args.empty?
-          self._contents
+          self.content_for ||= []
+          self.content_for = args unless args.empty?
+          self.content_for
         end
 
         def managable_content_ignore_namespace(*args)
