@@ -104,6 +104,19 @@ var admin = {
     });
   },
 
+  configureLocaleSelect: function() {
+    $('select[name=locale]').change(function(){
+      var self = $(this),
+          url = [];
+
+      url.push(window.location);
+      url.push((window.location + '').indexOf('?') > -1 ? '&locale=' : '?locale=');
+      url.push(self.val());
+
+      window.location = url.join('');
+    });
+  },
+
   loading: function() {
     $('.ajax_loader_container').toggle();
   },
@@ -120,5 +133,6 @@ $(document).ready(function() {
   admin.configureWysiwyg();
   admin.configureTableSort();
   admin.configureUpdatable();
+  admin.configureLocaleSelect();
 });
 

@@ -31,6 +31,10 @@ module Admin
           column :position, :integer
         end
 
+        def locale_fields
+          column :locale, :string
+        end
+
       end
     end
   end

@@ -57,6 +57,19 @@ module AdminHelper
     end
   end
 
+  def locale_select
+    available_locales = Rails.configuration.available_locales
+
+    html = ''
+
+    if available_locales.size > 1
+      html << label_tag(:locale, t('admin.locale_select'))
+      html << select_tag(:locale, options_for_select(available_locales.map {|locale| [locale, locale]}, params[:locale]))
+    end
+
+    html.html_safe
+  end
+
   def link_to_destroy(resource)
     icon_link_to(:delete, resource_path(resource), :method => :delete, :confirm => t('admin.delete_resource_confirmation', :resource_name => resource.class.model_name.human))
   end

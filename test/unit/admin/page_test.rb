@@ -24,12 +24,15 @@ module Admin
     include Admin::Models::SeoEnableTest
 
     should have_db_column(:controller_path).of_type(:string)
+    should have_db_column(:locale).of_type(:string)
 
-    should have_db_index(:controller_path).unique(true)
+    should have_db_index([:controller_path, :locale]).unique(true)
 
     should_not allow_mass_assignment_of(:controller_path)
+    should_not allow_mass_assignment_of(:locale)
     should_not allow_mass_assignment_of(:updated_at)
     should_not allow_mass_assignment_of(:created_at)
+
     should allow_mass_assignment_of(:page_contents_attributes)
 
     should validate_presence_of(:controller_path)
@@ -50,22 +53,34 @@ module Admin
     end
 
     test 'should be able to find page' do
-      @page = Factory(:page)
-
-      assert_equal @page.id, Page.for_controller(@page.controller_path).id
+      Page.generate!
+      assert_equal HomeMocksController.controller_path, Page.for_controller(HomeMocksController.controller_path).controller_path
     end
 
     test 'should be able to find a page that was not yet created' do
-      assert_equal 'home_mocks', Page.for_controller('home_mocks').controller_path
+      assert_equal HomeMocksController.controller_path, Page.for_controller(HomeMocksController.controller_path).controller_path
     end
 
     test 'should be able to generate pages for existing controllers' do
+      Rails.configuration.available_locales = nil
+
       Page.generate!
       check_generated_pages
 
       # Should NOT regenarete already existing pages and contents
       Page.generate!
       check_generated_pages
+    end
+
+    test 'should be able to generate pages for existing controllers with multiple locales' do
+      Rails.configuration.available_locales = ['en', 'pt']
+
+      Page.generate!
+      check_generated_pages Rails.configuration.available_locales
+
+      # Should NOT regenarete already existing pages and contents
+      Page.generate!
+      check_generated_pages Rails.configuration.available_locales
     end
 
     test 'should be able to get the page url' do
@@ -85,33 +100,44 @@ module Admin
 
     private
 
-    def check_generated_pages
-      @pages = Page.all
-      assert_equal 4, @pages.size
+    def check_generated_pages(locales = [Rails.configuration.i18n.locale])
+      locales.each do |locale|
+        original_locale = I18n.locale
+        I18n.locale = locale
 
-      #should generate global content for header as defined on managable_layout_content_for
-      @page = @pages[0]
-      assert_equal ApplicationController.controller_path, @page.controller_path
-      assert_equal 'header', @page.page_contents.last.key
+        #should generate global content for header as defined on managable_layout_content_for
+        page = Admin::Page.for_controller(ApplicationController.controller_path)
+        assert_equal ApplicationController.controller_path, page.controller_path
+        assert_equal locale, page.locale
+        assert_equal 'header', page.page_contents.last.key
 
-      @page = @pages[1]
-      assert_equal HomeMocksController.controller_path, @page.controller_path
+        #HomeMocksController
+        page = Admin::Page.for_controller(HomeMocksController.controller_path)
+        assert_equal HomeMocksController.controller_path, page.controller_path
+        assert_equal locale, page.locale
 
-      assert_equal 2, @page.page_contents.size
-      assert_equal 'body', @page.page_contents[0].key
-      assert_equal 'side', @page.page_contents[1].key
+        assert_equal 2, page.page_contents.size
+        assert_equal 'body', page.page_contents[0].key
+        assert_equal 'side', page.page_contents[1].key
 
-      @page = @pages[2]
-      assert_equal OtherMocksController.controller_path, @page.controller_path
+        #OtherMocksController
+        page = Admin::Page.for_controller(OtherMocksController.controller_path)
+        assert_equal OtherMocksController.controller_path, page.controller_path
+        assert_equal locale, page.locale
 
-      assert_equal 2, @page.page_contents.size
-      assert_equal 'body', @page.page_contents[0].key
-      assert_equal 'footer', @page.page_contents[1].key
+        assert_equal 2, page.page_contents.size
+        assert_equal 'body', page.page_contents[0].key
+        assert_equal 'footer', page.page_contents[1].key
 
-      @page = @pages[3]
-      assert_equal HomeNoContentMocksController.controller_path, @page.controller_path
+        #HomeNoContentMocksController
+        page = Admin::Page.for_controller(HomeNoContentMocksController.controller_path)
+        assert_equal HomeNoContentMocksController.controller_path, page.controller_path
+        assert_equal locale, page.locale
 
-      assert @page.page_contents.empty?
+        assert page.page_contents.empty?
+
+        I18n.locale = original_locale
+      end
     end
 
   end
