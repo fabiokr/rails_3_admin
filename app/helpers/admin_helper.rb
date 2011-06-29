@@ -51,7 +51,7 @@ module AdminHelper
         form.text_area(field, :class => 'wysiwyg')
       else
         content_tag(:div, :class => 'clear'){''} + content_tag(:div, :class => 'content') do
-          form.object.send(field).html_safe
+          form.object.send(field).html_safe unless form.object.send(field).nil?
         end
       end
     end
