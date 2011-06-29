@@ -3,10 +3,12 @@
   <%= form_for([:admin, @article]) do |f| %>
 	  <header><h3><%= form_title(f.object) %></h3></header>
 		  <div class="module_content">
-	      <fieldset>
-	        <%= f.label :category_id %>
-	        <%= f.collection_select :category_id, @article.class.reflect_on_association(:category).klass.sorted.all, :id, :name %>
-	      </fieldset>
+		    <% unless f.object.class.reflect_on_association(:category).nil? %>
+	        <fieldset>
+	          <%= f.label :category_id %>
+	          <%= f.collection_select :category_id, f.object.class.reflect_on_association(:category).klass.sorted.all, :id, :name %>
+	        </fieldset>
+	      <% end %>
 			  <%= render 'seo_inputs', :f => f, :editable => editable %>
 			  <%= content_form_tag f, :excerpt, editable %>
 			  <%= content_form_tag f, :body, editable %>
