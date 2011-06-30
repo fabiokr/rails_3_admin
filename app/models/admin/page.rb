@@ -14,13 +14,16 @@ module Admin
       sort = args.first
       order(sort.nil? ? 'title asc' : sort)
     end)
+
     scope :available, lambda { where(:controller_path => valid_controllers) }
+
+    scope :localized, lambda { |locale| where(:locale => locale) }
 
     class << self
 
       # Looks for the page related to a controller.
       def for_controller(controller_path)
-        finder = lambda { where(:controller_path => controller_path).first }
+        finder = lambda { where(:controller_path => controller_path).localized(I18n.locale).first }
 
         unless page = finder.call
           generate!
@@ -46,20 +49,23 @@ module Admin
           controller_path = controller.controller_path
           if controller.respond_to?(:managable_content_for) && valid_controllers.include?(controller_path)
             Page.transaction do
-              # Create Page if it does not exist yet
-              page = Page.where(:controller_path => controller_path).first || Page.new()
-              if page.new_record?
-                page.controller_path = controller_path
-                page.save!
-              end
+              (Rails.configuration.available_locales || [Rails.configuration.i18n.locale]).each do |locale|
+                # Create Page if it does not exist yet
+                page = Page.where(:controller_path => controller_path, :locale => locale).first || Page.new()
+                if page.new_record?
+                  page.controller_path = controller_path
+                  page.locale = locale
+                  page.save!
+                end
 
-              # Create PageContent if it does not exist yet
-              contents = (controller == ApplicationController) ? controller.managable_layout_content_for : controller.managable_content_for
-              contents.each do |key|
-                if page.page_contents.where(:key => key).first.nil?
-                  page_content = page.page_contents.build
-                  page_content.key = key
-                  page_content.save!
+                # Create PageContent if it does not exist yet
+                contents = (controller == ApplicationController) ? controller.managable_layout_content_for : controller.managable_content_for
+                contents.each do |key|
+                  if page.page_contents.where(:key => key).first.nil?
+                    page_content = page.page_contents.build
+                    page_content.key = key
+                    page_content.save!
+                  end
                 end
               end
             end

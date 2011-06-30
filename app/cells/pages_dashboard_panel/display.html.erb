@@ -5,6 +5,7 @@
       <tr>
 		      <th><%= Admin::Page.human_attribute_name(:url) %></th>
 		      <th><%= Admin::Page.human_attribute_name(:title) %></th>
+		      <th><%= Admin::Page.human_attribute_name(:locale) %></th>
 		      <th><%= Admin::Page.human_attribute_name(:updated_at) %></th>
 		      <th><%= t('admin.actions') %></th>
       </tr>
@@ -14,6 +15,7 @@
         <tr>
 		      <td><%= link_to_if (url = page.url), url, url %></td>
 		      <td><%= page.title %> <%= page.controller_path == 'application' ? ' - ' + t('admin.pages.general') : '' %></td>
+		      <td><%= page.locale %></td>
 		      <td><%= l(page.updated_at, :format => :short) %></td>
 		      <td>
             <%= icon_link_to(:edit, edit_admin_page_path(page)) %>

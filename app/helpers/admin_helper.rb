@@ -51,10 +51,23 @@ module AdminHelper
         form.text_area(field, :class => 'wysiwyg')
       else
         content_tag(:div, :class => 'clear'){''} + content_tag(:div, :class => 'content') do
-          form.object.send(field).html_safe
+          form.object.send(field).html_safe unless form.object.send(field).nil?
         end
       end
     end
+  end
+
+  def locale_select
+    available_locales = Rails.configuration.available_locales
+
+    html = ''
+
+    if available_locales.size > 1
+      html << label_tag(:locale, t('admin.locale_select'))
+      html << select_tag(:locale, options_for_select(available_locales.map {|locale| [locale, locale]}, params[:locale]))
+    end
+
+    html.html_safe
   end
 
   def link_to_destroy(resource)

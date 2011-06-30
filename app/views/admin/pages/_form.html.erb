@@ -3,17 +3,21 @@
   <%= form_for(@page) do |f| %>
 	  <header><h3><%= form_title(f.object) %></h3></header>
 		  <div class="module_content">
-				  <%= render 'seo_inputs', :f => f, :editable => editable %>
-					<% controller = ActiveSupport::Dependencies.ref("#{f.object.controller_path.camelize}Controller").get %>
-					<% if !f.object.page_contents.empty? && f.object.page_contents.detect{|content| controller.managable_content_for.include?(content.key.to_sym) || (controller.controller_path == 'application' && controller.managable_layout_content_for.include?(content.key.to_sym))} %>
-            <%= f.fields_for :page_contents do |content| %>
-              <% if controller.managable_content_for.include?(content.object.key.to_sym) || (controller.controller_path == 'application' && controller.managable_layout_content_for.include?(content.object.key.to_sym)) %>
-                <%= editable ? content.hidden_field(:id) : '' %>
-				        <%= content_form_tag content, :content, editable, :label => I18n.t("admin.content.#{content.object.key}") %>
-              <% end %>
+		    <fieldset>
+          <%= f.label :locale %>
+          <%= f.object.locale %>
+        </fieldset>
+			  <%= render 'seo_inputs', :f => f, :editable => editable %>
+				<% controller = ActiveSupport::Dependencies.ref("#{f.object.controller_path.camelize}Controller").get %>
+				<% if !f.object.page_contents.empty? && f.object.page_contents.detect{|content| controller.managable_content_for.include?(content.key.to_sym) || (controller.controller_path == 'application' && controller.managable_layout_content_for.include?(content.key.to_sym))} %>
+          <%= f.fields_for :page_contents do |content| %>
+            <% if controller.managable_content_for.include?(content.object.key.to_sym) || (controller.controller_path == 'application' && controller.managable_layout_content_for.include?(content.object.key.to_sym)) %>
+              <%= editable ? content.hidden_field(:id) : '' %>
+			        <%= content_form_tag content, :content, editable, :label => I18n.t("admin.content.#{content.object.key}") %>
             <% end %>
           <% end %>
-          <div class="clear"></div>
+        <% end %>
+        <div class="clear"></div>
 		  </div>
 		  <%= render 'form_footer', :f => f, :editable => editable %>
   <% end %>
