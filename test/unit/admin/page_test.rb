@@ -100,7 +100,7 @@ module Admin
 
     private
 
-    def check_generated_pages(locales = [Rails.configuration.i18n.locale])
+    def check_generated_pages(locales = [Rails.configuration.i18n.default_locale])
       locales.each do |locale|
         original_locale = I18n.locale
         I18n.locale = locale

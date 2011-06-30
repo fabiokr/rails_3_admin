@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529195652) do
+ActiveRecord::Schema.define(:version => 20110629023925) do
 
   create_table "admin_page_contents", :force => true do |t|
     t.integer  "page_id"
@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(:version => 20110529195652) do
     t.string   "keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "locale"
   end
 
-  add_index "admin_pages", ["controller_path"], :name => "index_admin_pages_on_controller_path", :unique => true
+  add_index "admin_pages", ["controller_path", "locale"], :name => "index_admin_pages_on_controller_path_and_locale", :unique => true
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

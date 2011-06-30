@@ -44,12 +44,13 @@ module Admin
         end).insert(0, ApplicationController).uniq
 
         valid_controllers = valid_controllers()
+        valid_locales     = valid_locales()
 
         controllers.each do |controller|
           controller_path = controller.controller_path
           if controller.respond_to?(:managable_content_for) && valid_controllers.include?(controller_path)
             Page.transaction do
-              (Rails.configuration.available_locales || [Rails.configuration.i18n.locale]).each do |locale|
+              valid_locales.each do |locale|
                 # Create Page if it does not exist yet
                 page = Page.where(:controller_path => controller_path, :locale => locale).first || Page.new()
                 if page.new_record?
@@ -88,6 +89,12 @@ module Admin
         end
 
         valid_controllers.insert(0, ApplicationController.controller_path).uniq
+      end
+
+      def valid_locales
+        valid_locales = Rails.configuration.available_locales || []
+        valid_locales << Rails.configuration.i18n.default_locale
+        valid_locales.compact.uniq
       end
     end
 
