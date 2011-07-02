@@ -22,6 +22,7 @@
         updated_at: Atualizado(a) em
         created_at: Criado(a) em
         url: Url
+        locale: Idioma
       admin:
         page:
           <<: *general

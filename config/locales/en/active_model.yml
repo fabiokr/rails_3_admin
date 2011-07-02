@@ -1,0 +1,37 @@
+en:
+  activerecord:
+    models:
+      admin:
+        page: Page
+      admin_user: User
+    attributes:
+      general: &general
+        title: Title
+        name: Name
+        excerpt: Excerpt
+        body: Content
+        description: Description
+        keywords: Keywords
+        category: Category
+        category_id: Category
+        date: Date
+        published: Published
+        published_at: Published at
+        scheduled_to: Scheduled to
+        highlight: Highlight
+        updated_at: Updated at
+        created_at: Created at
+        locale: Locale
+        url: Url
+      admin:
+        page:
+          <<: *general
+      admin_user:
+        email: E-mail
+        password: Password
+        password_confirmation: Password confirmation
+        last_sign_in_ip: Last sign in IP
+        last_sign_in_at: Last sign in at
+        updated_at: Updated at
+        created_at: Created at
+
