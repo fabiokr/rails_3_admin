@@ -94,7 +94,9 @@ module Admin
       def valid_locales
         valid_locales = Rails.configuration.available_locales || []
         valid_locales << Rails.configuration.i18n.default_locale
-        valid_locales.compact.uniq
+        valid_locales.compact!
+        valid_locales.uniq!
+        valid_locales
       end
     end
 
