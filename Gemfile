@@ -33,6 +33,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'shoulda'
-  gem 'guard'
+  gem 'guard', :git => 'git://github.com/guard/guard.git'
   gem 'turn', :require => false
 end
