@@ -15,9 +15,10 @@ module Admin
         scope :unpublished, where(:published_at => nil)
         scope :published, lambda { where(arel_table[:published_at].not_eq(nil)) }
         scope :highlighted, lambda { where(:highlight => true) }
-        scope :sorted, (lambda do |*args|
+        scope :sorted, (lambda {|*args| order 'highlight DESC, published_at DESC'})
+        scope :sorted_admin, (lambda do |*args|
           sort = args.first
-          order(sort ? sort : 'highlight DESC, published_at DESC')
+          order(sort ? sort : 'created_at DESC')
         end)
         scope :for_url_param, lambda { |param| where(:slug => param) }
       end

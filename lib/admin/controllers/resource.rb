@@ -17,7 +17,9 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
   # Overrides default to add pagination and sorting
   def end_of_association_chain
     chain = super
-    chain = chain.sorted(sort) if chain.respond_to?(:sorted)
+    if sort_method = chain_sort_method(chain)
+      chain = chain.send(sort_method, sort) 
+    end
     chain.page(params[:page]).per(self.class.paginate ? self.class.paginate : 999999)
   end
 
@@ -58,5 +60,15 @@ class Admin::Controllers::Resource < Admin::Controllers::Base
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : nil
+  end
+
+  def chain_sort_method(chain)
+    if chain.respond_to? :sorted_admin
+      :sorted_admin
+    elsif chain.respond_to? :sorted
+      :sorted
+    else
+      nil
+    end
   end
 end
