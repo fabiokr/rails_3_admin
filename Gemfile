@@ -1,24 +1,24 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '5.2.6.2'
 
 #libraries
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'inherited_resources'
 gem 'render_inheritable'
 gem 'responders'
 gem 'has_scope'
-gem 'breadcrumbs_on_rails'
-gem 'kaminari'
+gem 'breadcrumbs_on_rails', '>= 3.0.0', '>= 3.0.0'
+gem 'kaminari', '>= 1.2.1'
 gem 'acts_as_list'
 gem 'ckeditor'
-gem 'paperclip'
+gem 'paperclip', '>= 4.2.2'
 gem 'jammit'
 gem 'breadcrumbs_on_rails'
-gem 'cells'
+gem 'cells', '>= 3.8.7'
 
 #views
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.4.0'
 
 group :development, :test do
   gem 'sqlite3'
