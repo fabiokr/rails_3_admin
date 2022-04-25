@@ -5,3 +5,5 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 ActiveAdminBase::Application.load_tasks
+
+puts "this is a test #{ENV['hello']}"
